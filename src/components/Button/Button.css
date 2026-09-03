@@ -1,0 +1,59 @@
+.button {
+	border: none;
+	border-radius: 10px;
+	padding: 12px 20px;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+
+	transition:
+		transform 0.2s ease,
+		opacity 0.2s ease,
+		box-shadow 0.2s ease;
+}
+
+/* Botón principal */
+
+.button--primary {
+	color: white;
+
+	background: linear-gradient(90deg, #35c9ff, #7a5cff);
+
+	box-shadow: 0 4px 15px rgba(90, 100, 255, 0.25);
+}
+
+/* Botón secundario */
+
+.button--secondary {
+	background-color: #202430;
+	color: #ffffff;
+
+	border: 1px solid #353a4a;
+}
+
+/* Botón de peligro */
+
+.button--danger {
+	background-color: #ef4444;
+	color: white;
+}
+
+/* Hover */
+
+.button:hover:not(:disabled) {
+	transform: translateY(-2px);
+	opacity: 0.9;
+}
+
+/* Click */
+
+.button:active:not(:disabled) {
+	transform: translateY(0);
+}
+
+/* Deshabilitado */
+
+.button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}

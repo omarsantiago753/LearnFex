@@ -1,0 +1,89 @@
+/* src/components/Card/Card.css */
+
+.card {
+	width: 100%;
+	padding: 18px;
+
+	background-color: #202430;
+
+	border: 1px solid #353a4a;
+	border-radius: 16px;
+
+	box-sizing: border-box;
+
+	transition:
+		transform 0.2s ease,
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
+}
+
+/* Título */
+
+.card-title {
+	margin: 0 0 6px;
+
+	color: #ffffff;
+
+	font-size: 18px;
+	font-weight: 700;
+}
+
+/* Subtítulo */
+
+.card-subtitle {
+	margin: 0 0 14px;
+
+	color: #8b92a5;
+
+	font-size: 13px;
+}
+
+/* Contenido */
+
+.card-content {
+	color: #e5e7eb;
+
+	font-size: 14px;
+}
+
+/* Card que puede recibir clic */
+
+.card[onclick] {
+	cursor: pointer;
+}
+
+.card[onclick]:hover {
+	transform: translateY(-3px);
+
+	border-color: #35c9ff;
+
+	box-shadow: 0 8px 25px rgba(53, 201, 255, 0.12);
+}
+
+/* Variante principal */
+
+.card--primary {
+	background: linear-gradient(135deg, #35c9ff, #7a5cff);
+
+	border: none;
+}
+
+.card--primary .card-title,
+.card--primary .card-subtitle,
+.card--primary .card-content {
+	color: #ffffff;
+}
+
+/* Variante destacada */
+
+.card--highlight {
+	border-color: #7a5cff;
+
+	box-shadow: 0 0 0 1px rgba(122, 92, 255, 0.2);
+}
+
+/* Variante transparente */
+
+.card--transparent {
+	background-color: transparent;
+}

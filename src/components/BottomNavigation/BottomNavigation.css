@@ -1,0 +1,119 @@
+.bottom-navigation {
+	position: fixed;
+
+	bottom: 0;
+	left: 0;
+
+	width: 100%;
+	height: 70px;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+
+	padding: 6px 10px;
+
+	background-color: #151922;
+
+	border-top: 1px solid #2d3240;
+
+	box-sizing: border-box;
+
+	z-index: 1000;
+}
+
+/* Cada opción */
+
+.bottom-navigation-item {
+	position: relative;
+
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	gap: 4px;
+
+	height: 100%;
+
+	color: #7d8495;
+
+	text-decoration: none;
+
+	border-radius: 10px;
+
+	transition:
+		color 0.2s ease,
+		background-color 0.2s ease,
+		transform 0.2s ease;
+}
+
+/* Icono */
+
+.bottom-navigation-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	font-size: 21px;
+}
+
+/* Texto */
+
+.bottom-navigation-label {
+	font-size: 10px;
+	font-weight: 500;
+}
+
+/* Hover */
+
+.bottom-navigation-item:hover {
+	color: #ffffff;
+
+	background-color: rgba(53, 201, 255, 0.05);
+}
+
+/* Opción seleccionada */
+
+.bottom-navigation-item--active {
+	color: #35c9ff;
+}
+
+.bottom-navigation-item--active .bottom-navigation-icon {
+	transform: translateY(-1px);
+}
+
+/* Indicador superior */
+
+.bottom-navigation-item--active::before {
+	content: "";
+
+	position: absolute;
+
+	top: 0;
+
+	width: 28px;
+	height: 3px;
+
+	background: linear-gradient(90deg, #35c9ff, #7a5cff);
+
+	border-radius: 0 0 5px 5px;
+}
+
+/* Escritorio */
+
+@media (min-width: 768px) {
+	.bottom-navigation {
+		max-width: 600px;
+
+		left: 50%;
+
+		transform: translateX(-50%);
+
+		border-left: 1px solid #2d3240;
+		border-right: 1px solid #2d3240;
+
+		border-radius: 16px 16px 0 0;
+	}
+}

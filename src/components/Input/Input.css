@@ -1,0 +1,71 @@
+.input-group {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	width: 100%;
+}
+
+.input-label {
+	font-size: 14px;
+	font-weight: 600;
+	color: #e5e7eb;
+}
+
+.input {
+	width: 100%;
+	padding: 12px 14px;
+
+	background-color: #202430;
+	color: #ffffff;
+
+	border: 1px solid #353a4a;
+	border-radius: 10px;
+
+	font-size: 14px;
+
+	outline: none;
+
+	box-sizing: border-box;
+
+	transition:
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
+}
+
+.input::placeholder {
+	color: #7d8495;
+}
+
+/* Cuando el usuario selecciona el input */
+
+.input:focus {
+	border-color: #35c9ff;
+
+	box-shadow: 0 0 0 3px rgba(53, 201, 255, 0.12);
+}
+
+/* Input con error */
+
+.input--error {
+	border-color: #ef4444;
+}
+
+.input--error:focus {
+	border-color: #ef4444;
+
+	box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
+/* Mensaje de error */
+
+.input-error {
+	color: #ef4444;
+	font-size: 12px;
+}
+
+/* Input deshabilitado */
+
+.input:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}

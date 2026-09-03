@@ -1,0 +1,20 @@
+/* src/layouts/StudentLayout.css */
+
+.student-layout {
+	min-height: 100vh;
+
+	background-color: #11141c;
+	color: #ffffff;
+}
+
+.student-content {
+	width: 100%;
+
+	max-width: 1200px;
+
+	margin: 0 auto;
+
+	padding: 24px 20px 100px;
+
+	box-sizing: border-box;
+}

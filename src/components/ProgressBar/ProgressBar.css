@@ -1,0 +1,72 @@
+.progress-group {
+	width: 100%;
+}
+
+.progress-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	margin-bottom: 8px;
+}
+
+.progress-label {
+	color: #e5e7eb;
+
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.progress-percentage {
+	color: #9ca3af;
+
+	font-size: 13px;
+	font-weight: 600;
+}
+
+/* Fondo de la barra */
+
+.progress-track {
+	width: 100%;
+	height: 10px;
+
+	background-color: #2b303d;
+
+	border-radius: 999px;
+
+	overflow: hidden;
+}
+
+/* Barra de progreso */
+
+.progress-fill {
+	height: 100%;
+
+	border-radius: 999px;
+
+	transition: width 0.4s ease;
+}
+
+/* Variante principal */
+
+.progress-fill--primary {
+	background: linear-gradient(90deg, #35c9ff, #7a5cff);
+}
+
+/* Variante verde */
+
+.progress-fill--success {
+	background: linear-gradient(90deg, #22c55e, #10b981);
+}
+
+/* Variante amarilla */
+
+.progress-fill--warning {
+	background: linear-gradient(90deg, #f59e0b, #facc15);
+}
+
+/* Variante roja */
+
+.progress-fill--danger {
+	background: linear-gradient(90deg, #ef4444, #f97316);
+}

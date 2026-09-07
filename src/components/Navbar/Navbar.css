@@ -1,0 +1,167 @@
+.navbar {
+	width: 100%;
+	min-height: 64px;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	gap: 16px;
+
+	padding: 12px 20px;
+
+	background-color: #151922;
+
+	border-bottom: 1px solid #2d3240;
+
+	box-sizing: border-box;
+}
+
+/* Parte izquierda */
+
+.navbar-left {
+	display: flex;
+	align-items: center;
+
+	gap: 12px;
+
+	min-width: 0;
+}
+
+/* Logo */
+
+.navbar-logo {
+	width: 40px;
+	height: 40px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	flex-shrink: 0;
+
+	border-radius: 10px;
+
+	background: linear-gradient(135deg, #35c9ff, #7a5cff);
+
+	color: #ffffff;
+
+	font-size: 20px;
+	font-weight: 700;
+}
+
+/* Información */
+
+.navbar-info {
+	min-width: 0;
+}
+
+.navbar-title {
+	margin: 0;
+
+	color: #ffffff;
+
+	font-size: 18px;
+	font-weight: 700;
+
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.navbar-subtitle {
+	margin: 2px 0 0;
+
+	color: #8b92a5;
+
+	font-size: 12px;
+}
+
+/* Botón regresar */
+
+.navbar-back {
+	width: 38px;
+	height: 38px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background-color: #202430;
+	color: #ffffff;
+
+	border: 1px solid #353a4a;
+	border-radius: 10px;
+
+	font-size: 20px;
+
+	cursor: pointer;
+
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease,
+		transform 0.2s ease;
+}
+
+.navbar-back:hover {
+	background-color: #292e3b;
+
+	border-color: #35c9ff;
+
+	transform: translateX(-2px);
+}
+
+/* Acciones */
+
+.navbar-actions {
+	display: flex;
+	align-items: center;
+
+	gap: 10px;
+}
+
+/* Botones opcionales */
+
+.navbar-action-button {
+	width: 40px;
+	height: 40px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background-color: #202430;
+	color: #ffffff;
+
+	border: 1px solid #353a4a;
+	border-radius: 50%;
+
+	cursor: pointer;
+
+	font-size: 17px;
+
+	transition:
+		border-color 0.2s ease,
+		background-color 0.2s ease;
+}
+
+.navbar-action-button:hover {
+	border-color: #35c9ff;
+	background-color: #292e3b;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+	.navbar {
+		padding: 10px 14px;
+	}
+
+	.navbar-title {
+		font-size: 16px;
+	}
+
+	.navbar-subtitle {
+		font-size: 11px;
+	}
+}

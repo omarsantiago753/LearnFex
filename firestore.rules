@@ -29,5 +29,19 @@ service cloud.firestore {
 
       allow delete: if false;
     }
+       match /areas/{areaId} {
+      allow read: if estaAutenticado();
+      allow write: if esAdministrador();
+    }
+
+    match /preguntas/{preguntaId} {
+      allow read: if estaAutenticado();
+      allow write: if esAdministrador();
+    }
+
+    match /cuestionarios/{cuestionarioId} {
+      allow read: if estaAutenticado();
+      allow write: if esAdministrador();
+    } 
   }
 }

@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function estaAutenticado() {
+      return request.auth != null;
+    }
+
+    function esPropioUsuario(usuarioId) {
+      return estaAutenticado() && request.auth.uid == usuarioId;
+    }
+
+    function esAdministrador() {
+      return estaAutenticado() &&
+        get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.rol == 'administrador';
+    }
+
+    match /usuarios/{usuarioId} {
+      allow read: if esPropioUsuario(usuarioId) || esAdministrador();
+
+      allow create: if esPropioUsuario(usuarioId) &&
+        request.resource.data.rol == 'estudiante' &&
+        request.resource.data.estado == 'activo' &&
+        request.resource.data.xp == 0 &&
+        request.resource.data.nivel == 1;
+
+      allow update: if (esPropioUsuario(usuarioId) &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['nombre', 'apellido', 'colegio'])) ||
+        esAdministrador();
+
+      allow delete: if false;
+    }
+  }
+}

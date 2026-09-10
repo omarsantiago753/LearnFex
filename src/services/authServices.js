@@ -2,6 +2,7 @@ import {
 	signInWithEmailAndPassword,
 	createUserWithEmailAndPassword,
 	signOut,
+	sendPasswordResetEmail,
 } from "firebase/auth";
 
 import { auth } from "../config/firebase";
@@ -16,4 +17,8 @@ export const register = (email, password) => {
 
 export const logout = () => {
 	return signOut(auth);
+};
+
+export const resetPassword = (email) => {
+	return sendPasswordResetEmail(auth, email);
 };

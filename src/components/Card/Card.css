@@ -4,17 +4,17 @@
 	width: 100%;
 	padding: 18px;
 
-	background-color: #202430;
+	background-color: var(--color-surface);
 
-	border: 1px solid #353a4a;
-	border-radius: 16px;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
 
 	box-sizing: border-box;
 
 	transition:
-		transform 0.2s ease,
-		border-color 0.2s ease,
-		box-shadow 0.2s ease;
+		transform var(--transition-base),
+		border-color var(--transition-base),
+		box-shadow var(--transition-base);
 }
 
 /* Título */
@@ -22,28 +22,28 @@
 .card-title {
 	margin: 0 0 6px;
 
-	color: #ffffff;
+	color: var(--color-text);
 
-	font-size: 18px;
+	font-size: var(--font-size-lg);
 	font-weight: 700;
 }
 
 /* Subtítulo */
 
 .card-subtitle {
-	margin: 0 0 14px;
+	margin: 0 0 var(--space-md);
 
-	color: #8b92a5;
+	color: var(--color-text-subtle);
 
-	font-size: 13px;
+	font-size: var(--font-size-sm);
 }
 
 /* Contenido */
 
 .card-content {
-	color: #e5e7eb;
+	color: var(--color-text-secondary);
 
-	font-size: 14px;
+	font-size: var(--font-size-base);
 }
 
 /* Card que puede recibir clic */
@@ -55,7 +55,7 @@
 .card[onclick]:hover {
 	transform: translateY(-3px);
 
-	border-color: #35c9ff;
+	border-color: var(--color-primary);
 
 	box-shadow: 0 8px 25px rgba(53, 201, 255, 0.12);
 }
@@ -63,7 +63,7 @@
 /* Variante principal */
 
 .card--primary {
-	background: linear-gradient(135deg, #35c9ff, #7a5cff);
+	background: linear-gradient(135deg, var(--color-primary), var(--color-primary-alt));
 
 	border: none;
 }
@@ -71,13 +71,13 @@
 .card--primary .card-title,
 .card--primary .card-subtitle,
 .card--primary .card-content {
-	color: #ffffff;
+	color: var(--color-text);
 }
 
 /* Variante destacada */
 
 .card--highlight {
-	border-color: #7a5cff;
+	border-color: var(--color-primary-alt);
 
 	box-shadow: 0 0 0 1px rgba(122, 92, 255, 0.2);
 }

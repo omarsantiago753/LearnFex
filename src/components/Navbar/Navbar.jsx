@@ -1,4 +1,42 @@
+import { NavLink } from "react-router-dom";
+
+import {
+	FiHome,
+	FiBookOpen,
+	FiBarChart2,
+	FiAward,
+	FiUser,
+} from "react-icons/fi";
+
 import "./Navbar.css";
+
+const navigationItems = [
+	{
+		label: "Inicio",
+		path: "/inicio",
+		icon: <FiHome />,
+	},
+	{
+		label: "Práctica",
+		path: "/practica",
+		icon: <FiBookOpen />,
+	},
+	{
+		label: "Estadísticas",
+		path: "/estadisticas",
+		icon: <FiBarChart2 />,
+	},
+	{
+		label: "Ranking",
+		path: "/ranking",
+		icon: <FiAward />,
+	},
+	{
+		label: "Perfil",
+		path: "/perfil",
+		icon: <FiUser />,
+	},
+];
 
 function Navbar({
 	title = "LearnFex",
@@ -31,6 +69,22 @@ function Navbar({
 					{subtitle && <p className="navbar-subtitle">{subtitle}</p>}
 				</div>
 			</div>
+
+			<nav className="navbar-links">
+				{navigationItems.map((item) => (
+					<NavLink
+						key={item.path}
+						to={item.path}
+						className={({ isActive }) =>
+							`navbar-link ${isActive ? "navbar-link--active" : ""}`
+						}
+					>
+						<span className="navbar-link-icon">{item.icon}</span>
+
+						<span className="navbar-link-label">{item.label}</span>
+					</NavLink>
+				))}
+			</nav>
 
 			{actions && <div className="navbar-actions">{actions}</div>}
 		</header>

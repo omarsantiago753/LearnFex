@@ -13,9 +13,9 @@
 
 	padding: 6px 10px;
 
-	background-color: #151922;
+	background-color: var(--color-surface-nav);
 
-	border-top: 1px solid #2d3240;
+	border-top: 1px solid var(--color-border-alt);
 
 	box-sizing: border-box;
 
@@ -37,16 +37,16 @@
 
 	height: 100%;
 
-	color: #7d8495;
+	color: var(--color-text-faint);
 
 	text-decoration: none;
 
-	border-radius: 10px;
+	border-radius: var(--radius-md);
 
 	transition:
-		color 0.2s ease,
-		background-color 0.2s ease,
-		transform 0.2s ease;
+		color var(--transition-base),
+		background-color var(--transition-base),
+		transform var(--transition-base);
 }
 
 /* Icono */
@@ -69,7 +69,7 @@
 /* Hover */
 
 .bottom-navigation-item:hover {
-	color: #ffffff;
+	color: var(--color-text);
 
 	background-color: rgba(53, 201, 255, 0.05);
 }
@@ -77,7 +77,7 @@
 /* Opción seleccionada */
 
 .bottom-navigation-item--active {
-	color: #35c9ff;
+	color: var(--color-primary);
 }
 
 .bottom-navigation-item--active .bottom-navigation-icon {
@@ -96,24 +96,15 @@
 	width: 28px;
 	height: 3px;
 
-	background: linear-gradient(90deg, #35c9ff, #7a5cff);
+	background: linear-gradient(90deg, var(--color-primary), var(--color-primary-alt));
 
 	border-radius: 0 0 5px 5px;
 }
 
-/* Escritorio */
+/* Tablet / escritorio */
 
 @media (min-width: 768px) {
 	.bottom-navigation {
-		max-width: 600px;
-
-		left: 50%;
-
-		transform: translateX(-50%);
-
-		border-left: 1px solid #2d3240;
-		border-right: 1px solid #2d3240;
-
-		border-radius: 16px 16px 0 0;
+		display: none;
 	}
 }

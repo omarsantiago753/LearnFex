@@ -1,0 +1,774 @@
+/* =========================================================
+   LEARNFEX - PRACTICE
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.practice-page {
+  min-height: 100vh;
+  width: 100%;
+  padding: 25px 25px 95px;
+  background: #020817;
+  color: #ffffff;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+/* =========================================================
+   CONTENEDOR
+   ========================================================= */
+
+.practice-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.practice-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.practice-title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.practice-title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.practice-subtitle {
+  margin: 0;
+  color: #7d8aa3;
+  font-size: 13px;
+}
+
+.practice-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+
+.practice-button {
+  border: none;
+  border-radius: 7px;
+  padding: 10px 17px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.practice-button-primary {
+  color: #ffffff;
+  background: linear-gradient(135deg, #6845f5, #5935db);
+  box-shadow: 0 5px 18px rgba(91, 55, 219, 0.25);
+}
+
+.practice-button-primary:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #7658ff, #6640ec);
+  box-shadow: 0 7px 22px rgba(91, 55, 219, 0.4);
+}
+
+.practice-button-secondary {
+  color: #a7b2c8;
+  background: #0b1527;
+  border: 1px solid #25334b;
+}
+
+.practice-button-secondary:hover {
+  color: #ffffff;
+  background: #111d31;
+  border-color: #394a67;
+}
+
+/* =========================================================
+   BUSCADOR
+   ========================================================= */
+
+.practice-search {
+  position: relative;
+  width: 100%;
+  margin-bottom: 17px;
+}
+
+.practice-search input {
+  width: 100%;
+  height: 42px;
+  padding: 0 45px 0 15px;
+  border: 1px solid #202f48;
+  border-radius: 8px;
+  outline: none;
+  background: #081326;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.practice-search input::placeholder {
+  color: #596880;
+}
+
+.practice-search input:hover {
+  border-color: #30425f;
+}
+
+.practice-search input:focus {
+  border-color: #6850e8;
+  box-shadow: 0 0 0 3px rgba(104, 80, 232, 0.12);
+}
+
+.practice-search-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  color: #687791;
+  font-size: 15px;
+  pointer-events: none;
+}
+
+/* =========================================================
+   FILTROS
+   ========================================================= */
+
+.practice-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  overflow-x: auto;
+  padding-bottom: 3px;
+}
+
+.practice-filters::-webkit-scrollbar {
+  height: 3px;
+}
+
+.practice-filters::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.practice-filters::-webkit-scrollbar-thumb {
+  background: #273651;
+  border-radius: 10px;
+}
+
+.practice-filter {
+  flex-shrink: 0;
+  padding: 7px 14px;
+  border: 1px solid #25344e;
+  border-radius: 20px;
+  background: #091426;
+  color: #7f8da5;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.practice-filter:hover {
+  color: #ffffff;
+  border-color: #5845bd;
+}
+
+.practice-filter.active {
+  color: #ffffff;
+  background: #5538d5;
+  border-color: #6549ed;
+  box-shadow: 0 4px 14px rgba(83, 56, 213, 0.25);
+}
+
+/* =========================================================
+   PRÁCTICA DESTACADA
+   ========================================================= */
+
+.practice-featured {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 150px;
+  margin-bottom: 28px;
+  padding: 24px;
+  overflow: hidden;
+  border: 1px solid #313d91;
+  border-radius: 13px;
+  background:
+    radial-gradient(
+      circle at 90% 40%,
+      rgba(89, 67, 238, 0.25),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #111c3c 0%,
+      #0c1730 100%
+    );
+}
+
+.practice-featured::after {
+  content: "";
+  position: absolute;
+  right: -80px;
+  top: -100px;
+  width: 230px;
+  height: 230px;
+  border: 1px solid rgba(115, 93, 255, 0.1);
+  border-radius: 50%;
+}
+
+.practice-featured-content {
+  position: relative;
+  z-index: 2;
+}
+
+.practice-featured-label {
+  display: inline-block;
+  margin-bottom: 7px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: rgba(22, 199, 230, 0.12);
+  color: #23d3ec;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.practice-featured h2 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.practice-featured p {
+  margin: 0 0 14px;
+  color: #7d8ca5;
+  font-size: 11px;
+}
+
+.practice-featured-progress {
+  width: 290px;
+  max-width: 100%;
+}
+
+.practice-progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  color: #8290a8;
+  font-size: 10px;
+}
+
+.practice-progress-info span:last-child {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.practice-progress-bar {
+  width: 100%;
+  height: 5px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #202c45;
+}
+
+.practice-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    #20c7df,
+    #6550f2
+  );
+}
+
+.practice-featured-action {
+  position: relative;
+  z-index: 3;
+}
+
+/* =========================================================
+   SECCIONES
+   ========================================================= */
+
+.practice-section {
+  margin-bottom: 30px;
+}
+
+.practice-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 13px;
+}
+
+.practice-section-title {
+  margin: 0;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.practice-section-link {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #7968ee;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.practice-section-link:hover {
+  color: #a094ff;
+}
+
+/* =========================================================
+   TEMAS
+   ========================================================= */
+
+.practice-topics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.practice-topic-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-height: 90px;
+  padding: 13px;
+  border: 1px solid #1c2a42;
+  border-radius: 10px;
+  background: #081325;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.practice-topic-card:hover {
+  transform: translateY(-2px);
+  border-color: #394577;
+  background: #0b1830;
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15);
+}
+
+.practice-topic-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 41px;
+  height: 41px;
+  flex-shrink: 0;
+  border: 1px solid #21324e;
+  border-radius: 10px;
+  background: #101e35;
+  color: #43cfe8;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.practice-topic-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.practice-topic-title {
+  margin: 0 0 4px;
+  overflow: hidden;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.practice-topic-description {
+  margin: 0 0 7px;
+  color: #687890;
+  font-size: 10px;
+}
+
+.practice-topic-progress {
+  width: 100%;
+}
+
+.practice-topic-progress-bar {
+  width: 100%;
+  height: 4px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #1b2940;
+}
+
+.practice-topic-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #26bfd5;
+  transition: width 0.3s ease;
+}
+
+.practice-topic-percent {
+  margin-top: 4px;
+  color: #697993;
+  font-size: 9px;
+}
+
+.practice-topic-arrow {
+  flex-shrink: 0;
+  color: #596981;
+  font-size: 17px;
+  transition: all 0.2s ease;
+}
+
+.practice-topic-card:hover .practice-topic-arrow {
+  color: #897aff;
+  transform: translateX(3px);
+}
+
+/* =========================================================
+   LISTA DE PRÁCTICAS
+   ========================================================= */
+
+.practice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.practice-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 12px 14px;
+  border: 1px solid #1c2a41;
+  border-radius: 9px;
+  background: #081325;
+  transition: all 0.2s ease;
+}
+
+.practice-item:hover {
+  border-color: #354263;
+  background: #0b1830;
+}
+
+.practice-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 39px;
+  height: 39px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  background: #101e35;
+  color: #8072f2;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.practice-item-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.practice-item-title {
+  margin: 0 0 5px;
+  overflow: hidden;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.practice-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #687890;
+  font-size: 9px;
+}
+
+/* =========================================================
+   DIFICULTAD
+   ========================================================= */
+
+.practice-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 7px;
+  border-radius: 4px;
+  font-size: 8px;
+  font-weight: 600;
+}
+
+.practice-badge-easy {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.1);
+}
+
+.practice-badge-medium {
+  color: #facc15;
+  background: rgba(250, 204, 21, 0.1);
+}
+
+.practice-badge-hard {
+  color: #fb7185;
+  background: rgba(251, 113, 133, 0.1);
+}
+
+/* =========================================================
+   SIN RESULTADOS
+   ========================================================= */
+
+.practice-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  padding: 30px;
+  border: 1px dashed #273650;
+  border-radius: 12px;
+  background: #071224;
+  text-align: center;
+}
+
+.practice-empty-icon {
+  margin-bottom: 10px;
+  font-size: 30px;
+  opacity: 0.6;
+}
+
+.practice-empty h3 {
+  margin: 0 0 6px;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.practice-empty p {
+  max-width: 350px;
+  margin: 0;
+  color: #687891;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   NAVEGACIÓN INFERIOR
+   ========================================================= */
+
+.practice-bottom-nav {
+  position: fixed;
+  z-index: 100;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 67px;
+  border-top: 1px solid #17243a;
+  background: rgba(3, 10, 22, 0.96);
+  backdrop-filter: blur(14px);
+}
+
+.practice-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.practice-nav-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 65px;
+  height: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #5f6d84;
+  font-family: inherit;
+  font-size: 9px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.practice-nav-item span:first-child {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.practice-nav-item:hover {
+  color: #9a8fff;
+}
+
+.practice-nav-item.active {
+  color: #6655ed;
+}
+
+.practice-nav-item.active::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  width: 21px;
+  height: 2px;
+  border-radius: 5px;
+  background: #6655ed;
+}
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+.practice-button:focus-visible,
+.practice-filter:focus-visible,
+.practice-section-link:focus-visible,
+.practice-nav-item:focus-visible {
+  outline: 2px solid #7665f5;
+  outline-offset: 2px;
+}
+
+.practice-topic-card:focus-visible {
+  outline: 2px solid #7665f5;
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .practice-page {
+    padding: 20px 18px 90px;
+  }
+
+  .practice-topics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   MÓVIL
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .practice-page {
+    padding: 16px 12px 85px;
+  }
+
+  .practice-header {
+    margin-bottom: 18px;
+  }
+
+  .practice-title {
+    font-size: 23px;
+  }
+
+  .practice-subtitle {
+    font-size: 11px;
+  }
+
+  .practice-header-actions {
+    display: none;
+  }
+
+  .practice-featured {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 17px;
+    padding: 19px;
+  }
+
+  .practice-featured h2 {
+    font-size: 17px;
+  }
+
+  .practice-featured-progress {
+    width: 100%;
+  }
+
+  .practice-featured-action {
+    width: 100%;
+  }
+
+  .practice-featured-action .practice-button {
+    width: 100%;
+  }
+
+  .practice-topic-card {
+    min-height: 82px;
+  }
+
+  .practice-topic-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .practice-item {
+    padding: 11px;
+  }
+
+  .practice-item .practice-button {
+    padding: 8px 11px;
+    font-size: 10px;
+  }
+
+  .practice-nav-item {
+    min-width: 55px;
+    font-size: 8px;
+  }
+
+  .practice-nav-item span:first-child {
+    font-size: 16px;
+  }
+}
+
+/* =========================================================
+   MÓVIL PEQUEÑO
+   ========================================================= */
+
+@media (max-width: 400px) {
+  .practice-page {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .practice-item-meta {
+    gap: 4px;
+  }
+
+  .practice-item .practice-button {
+    padding: 7px 8px;
+  }
+
+  .practice-nav-item {
+    min-width: 48px;
+  }
+}

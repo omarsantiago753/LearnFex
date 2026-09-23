@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../../hooks/useAuth";
 import * as userService from "../../../services/userService";
@@ -8,6 +9,7 @@ import Loader from "../../../components/Loader/Loader";
 import "./Profile.css";
 
 function Profile() {
+	const navigate = useNavigate();
 	const { user, profile, loading } = useAuth();
 
 	const [nombre, setNombre] = useState("");
@@ -73,6 +75,16 @@ function Profile() {
 					<span className="profile-field-label">Nivel</span>
 					<span className="profile-field-value">{profile.nivel}</span>
 				</div>
+			</section>
+
+			<section className="profile-menu">
+				<button
+					type="button"
+					className="profile-menu-item"
+					onClick={() => navigate("/logros")}
+				>
+					🏅 Logros
+				</button>
 			</section>
 
 			{guardado && (

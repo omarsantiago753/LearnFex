@@ -44,6 +44,37 @@
 	font-weight: 600;
 }
 
+.profile-menu {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.profile-menu-item {
+	display: flex;
+	align-items: center;
+	gap: var(--space-sm);
+
+	padding: var(--space-sm) var(--space-md);
+
+	color: var(--color-text);
+	font-size: var(--font-size-sm);
+	font-weight: 600;
+	text-align: left;
+
+	background-color: var(--color-surface-alt);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	cursor: pointer;
+
+	transition: var(--transition-base);
+}
+
+.profile-menu-item:hover {
+	background-color: var(--color-surface);
+	border-color: var(--color-primary);
+}
+
 .profile-form {
 	display: flex;
 	flex-direction: column;

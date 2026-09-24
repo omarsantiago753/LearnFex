@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Practice.css";
 
 import { getAllAreas } from "../../../repositories/areaRepository";
 
 function Practice() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [areas, setAreas] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeArea, setActiveArea] = useState("Todas");
+  const [activeArea, setActiveArea] = useState(
+    location.state?.areaNombre || "Todas"
+  );
   const [search, setSearch] = useState("");
 
   useEffect(() => {

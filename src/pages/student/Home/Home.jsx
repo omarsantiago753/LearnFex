@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
+
+import { getAllAreas } from "../../../repositories/areaRepository";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -14,36 +16,22 @@ const Home = () => {
     streak: 5,
   };
 
-  const areas = [
-    {
-      id: 1,
-      name: "Matemáticas",
-      description: "Practica operaciones, álgebra y problemas.",
-      icon: "∑",
-      path: "/practice?area=matematicas",
-    },
-    {
-      id: 2,
-      name: "Lenguaje",
-      description: "Mejora tu comprensión y expresión.",
-      icon: "Aa",
-      path: "/practice?area=lenguaje",
-    },
-    {
-      id: 3,
-      name: "Ciencias",
-      description: "Aprende sobre ciencia y naturaleza.",
-      icon: "⚛",
-      path: "/practice?area=ciencias",
-    },
-    {
-      id: 4,
-      name: "Inglés",
-      description: "Practica vocabulario y comprensión.",
-      icon: "EN",
-      path: "/practice?area=ingles",
-    },
-  ];
+  const [areas, setAreas] = useState([]);
+
+  useEffect(() => {
+    const cargarAreas = async () => {
+      try {
+        const data = await getAllAreas();
+
+        setAreas(Array.isArray(data) ? data : []);
+      } catch (error) {
+        console.error("Error al cargar las áreas:", error);
+        setAreas([]);
+      }
+    };
+
+    cargarAreas();
+  }, []);
 
   const handlePractice = () => {
     navigate("/practica");
@@ -57,8 +45,8 @@ const Home = () => {
     navigate("/estadisticas");
   };
 
-  const handleArea = (path) => {
-    navigate(path);
+  const handleArea = (area) => {
+    navigate("/practica", { state: { areaNombre: area.nombre } });
   };
 
   return (
@@ -220,16 +208,16 @@ const Home = () => {
             <article
               className="home-area-card"
               key={area.id}
-              onClick={() => handleArea(area.path)}
+              onClick={() => handleArea(area)}
             >
               <div className="home-area-icon">
-                {area.icon}
+                {(area.nombre || "?").charAt(0)}
               </div>
 
               <div className="home-area-info">
-                <h3>{area.name}</h3>
+                <h3>{area.nombre}</h3>
 
-                <p>{area.description}</p>
+                <p>{area.descripcion}</p>
               </div>
 
               <span className="home-area-arrow">

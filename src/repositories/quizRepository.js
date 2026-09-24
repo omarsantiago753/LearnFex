@@ -1,4 +1,15 @@
-import { addDoc, collection, doc, getDoc } from "firebase/firestore";
+import {
+	addDoc,
+	collection,
+	doc,
+	getDoc,
+	getDocs,
+	limit,
+	orderBy,
+	query,
+	startAfter,
+	updateDoc,
+} from "firebase/firestore";
 
 import { db } from "../config/firebase";
 
@@ -31,4 +42,58 @@ export const getQuizById = async (id) => {
 		id: snapshot.id,
 		...snapshot.data(),
 	};
+};
+
+/**
+ * Obtener todos los cuestionarios (paginado)
+ * @param {DocumentSnapshot|null} cursor
+ * @param {number} pageSize
+ */
+export const getAllQuizzes = async (cursor = null, pageSize = 10) => {
+	const cuestionariosRef = collection(db, "cuestionarios");
+
+	let q;
+
+	if (cursor) {
+		q = query(
+			cuestionariosRef,
+			orderBy("fechaCreacion", "desc"),
+			startAfter(cursor),
+			limit(pageSize),
+		);
+	} else {
+		q = query(
+			cuestionariosRef,
+			orderBy("fechaCreacion", "desc"),
+			limit(pageSize),
+		);
+	}
+
+	const snapshot = await getDocs(q);
+
+	const quizzes = snapshot.docs.map((docItem) => ({
+		id: docItem.id,
+		...docItem.data(),
+	}));
+
+	const lastDoc = snapshot.docs[snapshot.docs.length - 1] || null;
+
+	return {
+		quizzes,
+		cursor: lastDoc,
+	};
+};
+
+export const updateQuiz = async (id, cambios) => {
+	const ref = doc(db, "cuestionarios", id);
+
+	await updateDoc(ref, cambios);
+};
+
+export const deleteQuiz = async (id) => {
+	const ref = doc(db, "cuestionarios", id);
+
+	await updateDoc(ref, {
+		estado: "inactivo",
+	});
 };

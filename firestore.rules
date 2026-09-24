@@ -1,6 +1,10 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+
+    // =========================
+    // 🔐 FUNCIONES AUXILIARES
+    // =========================
     function estaAutenticado() {
       return request.auth != null;
     }
@@ -14,34 +18,88 @@ service cloud.firestore {
         get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.rol == 'administrador';
     }
 
+    // =========================
+    // 👥 USUARIOS
+    // =========================
     match /usuarios/{usuarioId} {
+
+      // 👀 Ver perfil
       allow read: if esPropioUsuario(usuarioId) || esAdministrador();
 
+      // 🆕 Registro controlado
       allow create: if esPropioUsuario(usuarioId) &&
         request.resource.data.rol == 'estudiante' &&
         request.resource.data.estado == 'activo' &&
         request.resource.data.xp == 0 &&
         request.resource.data.nivel == 1;
 
-      allow update: if (esPropioUsuario(usuarioId) &&
-        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['nombre', 'apellido', 'colegio'])) ||
-        esAdministrador();
+      // ✏️ Editar perfil propio (campos limitados) o admin total
+      allow update: if (
+        esPropioUsuario(usuarioId) &&
+        request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['nombre', 'apellido', 'colegio'])
+      ) || esAdministrador();
 
+      // 🚫 No eliminar usuarios
       allow delete: if false;
     }
-       match /areas/{areaId} {
+
+    // =========================
+    // 📚 ÁREAS
+    // =========================
+    match /areas/{areaId} {
       allow read: if estaAutenticado();
       allow write: if esAdministrador();
     }
 
+    // =========================
+    // ❓ PREGUNTAS
+    // =========================
     match /preguntas/{preguntaId} {
       allow read: if estaAutenticado();
       allow write: if esAdministrador();
     }
 
+    // =========================
+    // 📝 CUESTIONARIOS
+    // =========================
     match /cuestionarios/{cuestionarioId} {
       allow read: if estaAutenticado();
       allow write: if esAdministrador();
-    } 
+    }
+
+    // =========================
+    // 📝 RESULTADOS (pruebas)
+    // =========================
+    match /resultados/{resultadoId} {
+
+      // 👨‍💼 Admin ve todo
+      allow read: if esAdministrador();
+
+      // 👨‍🎓 Usuario ve solo los suyos
+      allow read: if estaAutenticado() &&
+        resource.data.userId == request.auth.uid;
+
+      // ✍️ Crear resultados
+      allow create: if estaAutenticado();
+
+      // 🚫 No modificar resultados
+      allow update, delete: if false;
+    }
+
+    // =========================
+    // 📊 ESTADÍSTICAS PLATAFORMA
+    // =========================
+    match /estadisticas_plataforma/{docId} {
+
+      // 👀 Solo admin
+      allow read: if esAdministrador();
+
+      // ✍️ Escritura controlada (puedes cambiar a esAdministrador si quieres más seguridad)
+      allow create: if estaAutenticado();
+
+      // 🚫 No edición manual
+      allow update, delete: if false;
+    }
   }
 }

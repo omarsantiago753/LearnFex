@@ -8,21 +8,35 @@ const Reports = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // 🔹 Cargar estadísticas
-  const loadStats = async () => {
-    try {
-      const data = await getPlatformStats();
-      setStats(data);
-    } catch (err) {
-      console.error("Error cargando estadísticas:", err);
-      setError("No se pudieron cargar los reportes");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    let activo = true;
+
+    // 🔹 Cargar estadísticas
+    const loadStats = async () => {
+      try {
+        const data = await getPlatformStats();
+
+        if (activo) {
+          setStats(data);
+        }
+      } catch (err) {
+        console.error("Error cargando estadísticas:", err);
+
+        if (activo) {
+          setError("No se pudieron cargar los reportes");
+        }
+      } finally {
+        if (activo) {
+          setLoading(false);
+        }
+      }
+    };
+
     loadStats();
+
+    return () => {
+      activo = false;
+    };
   }, []);
 
   if (loading) {

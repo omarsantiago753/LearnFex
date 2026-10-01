@@ -99,5 +99,12 @@ service cloud.firestore {
       allow read: if estaAutenticado();
       allow write: if esAdministrador();
     }
+
+    // Estadisticas agregadas del panel de administracion
+    match /estadisticas_plataforma/{docId} {
+      allow read: if esAdministrador();
+      allow create: if estaAutenticado();
+      allow update, delete: if false;
+    }
   }
 }

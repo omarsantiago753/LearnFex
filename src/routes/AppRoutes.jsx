@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from "../pages/auth/Login/Login";
 import Register from "../pages/auth/Register/Register";
 import ForgotPassword from "../pages/auth/ForgotPassword/Forgotpassword";
+
 import Home from "../pages/student/Home/Home";
 import Practice from "../pages/student/Practice/Practice";
 import Quiz from "../pages/student/Quiz/Quiz";
@@ -12,10 +13,14 @@ import Statistics from "../pages/student/Statistics/Statistics";
 import Ranking from "../pages/student/Ranking/Ranking";
 import Achievements from "../pages/student/Achievements/Achievements";
 import Profile from "../pages/student/Profile/Profile";
+
 import Dashboard from "../pages/admin/Dashboard/Dashboard";
+
 import PrivateRoutes from "./PrivateRoutes";
 import AdminRoute from "./AdminRoute";
+
 import StudentLayout from "../layouts/StudentLayout";
+import AdminLayout from "../layouts/AdminLayout";
 
 function AppRoutes() {
 	return (
@@ -24,7 +29,10 @@ function AppRoutes() {
 
 			<Route path="/registro" element={<Register />} />
 
-			<Route path="/recuperar-contrasena" element={<ForgotPassword />} />
+			<Route
+				path="/recuperar-contrasena"
+				element={<ForgotPassword />}
+			/>
 
 			<Route element={<PrivateRoutes />}>
 				<Route element={<StudentLayout />}>
@@ -43,9 +51,15 @@ function AppRoutes() {
 
 				{/* Flujo de resolución de pruebas: pila de rutas independiente del layout
 				principal (Navbar/BottomNavigation), tal como lo describe el SDD 5.1. */}
-				<Route path="/practica/cuestionario" element={<Quiz />} />
+				<Route
+					path="/practica/cuestionario"
+					element={<Quiz />}
+				/>
 
-				<Route path="/resultados/:resultadoId" element={<Results />} />
+				<Route
+					path="/resultados/:resultadoId"
+					element={<Results />}
+				/>
 
 				<Route
 					path="/resultados/:resultadoId/retroalimentacion"
@@ -54,7 +68,9 @@ function AppRoutes() {
 			</Route>
 
 			<Route element={<AdminRoute />}>
-				<Route path="/admin" element={<Dashboard />} />
+				<Route element={<AdminLayout />}>
+					<Route path="/admin" element={<Dashboard />} />
+				</Route>
 			</Route>
 		</Routes>
 	);

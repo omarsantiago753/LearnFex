@@ -1,4 +1,17 @@
-import { doc, getDoc, runTransaction, setDoc, updateDoc, serverTimestamp } from "firebase/firestore";
+import {
+	collection,
+	doc,
+	getDoc,
+	getDocs,
+	limit,
+	orderBy,
+	query,
+	runTransaction,
+	setDoc,
+	startAfter,
+	updateDoc,
+	serverTimestamp,
+} from "firebase/firestore";
 
 import { db } from "../config/firebase";
 
@@ -74,4 +87,51 @@ export const actualizarGamificacion = async (uid, xpGanado) => {
 
 		return { xp: nuevoXp, nivel: nuevoNivel };
 	});
+};
+
+export const getAllUsers = async (cursor = null, pageSize = 10) => {
+	const usuariosRef = collection(db, "usuarios");
+
+	const restricciones = [orderBy("fechaRegistro", "desc")];
+
+	if (cursor) {
+		restricciones.push(startAfter(cursor));
+	}
+
+	restricciones.push(limit(pageSize));
+
+	const snapshot = await getDocs(query(usuariosRef, ...restricciones));
+
+	const users = snapshot.docs.map((docItem) => ({
+		id: docItem.id,
+		...docItem.data(),
+	}));
+
+	const lastDoc = snapshot.docs[snapshot.docs.length - 1] || null;
+
+	return { users, cursor: lastDoc };
+};
+
+const ESTADOS_VALIDOS = ["activo", "inactivo"];
+
+export const setUserEstado = async (uid, estado) => {
+	if (!ESTADOS_VALIDOS.includes(estado)) {
+		throw new Error(`Estado inválido: ${estado}. Debe ser 'activo' o 'inactivo'.`);
+	}
+
+	const ref = doc(db, "usuarios", uid);
+
+	await updateDoc(ref, { estado });
+};
+
+const ROLES_VALIDOS = ["estudiante", "administrador"];
+
+export const setUserRol = async (uid, rol) => {
+	if (!ROLES_VALIDOS.includes(rol)) {
+		throw new Error(`Rol inválido: ${rol}. Debe ser 'estudiante' o 'administrador'.`);
+	}
+
+	const ref = doc(db, "usuarios", uid);
+
+	await updateDoc(ref, { rol });
 };

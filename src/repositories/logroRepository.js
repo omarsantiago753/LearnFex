@@ -1,4 +1,4 @@
-import { collection, doc, getDocs, serverTimestamp, setDoc } from "firebase/firestore";
+import { addDoc, collection, doc, getDocs, serverTimestamp, setDoc } from "firebase/firestore";
 
 import { db } from "../config/firebase";
 import { getResultadosByUsuario } from "./resultRepository";
@@ -30,6 +30,26 @@ const CRITERIOS = {
 	primer_quiz: (totalResultados) => totalResultados >= 1,
 	cinco_simulacros: (totalResultados) => totalResultados >= 5,
 	diez_simulacros: (totalResultados) => totalResultados >= 10,
+};
+
+export const createLogro = async (datos) => {
+	if (!datos?.nombre || !datos?.descripcion) {
+		throw new Error("El logro debe tener nombre y descripción.");
+	}
+
+	if (!CRITERIOS[datos.criterio]) {
+		throw new Error(`Criterio de logro desconocido: ${datos.criterio}.`);
+	}
+
+	const ref = collection(db, "logros");
+
+	const nuevoLogro = await addDoc(ref, {
+		nombre: datos.nombre,
+		descripcion: datos.descripcion,
+		criterio: datos.criterio,
+	});
+
+	return nuevoLogro.id;
 };
 
 export const evaluarLogros = async (usuarioId, resultado) => {

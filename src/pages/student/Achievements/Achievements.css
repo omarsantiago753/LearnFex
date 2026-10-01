@@ -1,28 +1,29 @@
+```css
 .achievements-container {
   max-width: 500px;
   margin: 30px auto;
-  padding: 20px;
+  padding: var(--space-lg);
   background: #1e1e2f;
-  border-radius: 12px;
-  color: #ffffff;
-  font-family: Arial, sans-serif;
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .achievements-container h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: var(--space-lg);
 }
 
 .achievements-list {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: var(--space-sm);
 }
 
 .achievement {
-  padding: 15px;
-  border-radius: 10px;
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
   background: #2a2a40;
   transition:
     transform 0.2s,
@@ -36,7 +37,7 @@
 /* Logro desbloqueado */
 .achievement.unlocked {
   background: linear-gradient(135deg, #2ecc71, #27ae60);
-  color: #ffffff;
+  color: var(--color-text);
 }
 
 /* Logro bloqueado */
@@ -45,19 +46,19 @@
 }
 
 .achievement h3 {
-  margin: 0 0 8px 0;
+  margin: 0 0 var(--space-xs) 0;
 }
 
 .achievement p {
-  margin: 0 0 10px 0;
-  font-size: 14px;
+  margin: 0 0 var(--space-xs) 0;
+  font-size: var(--font-size-base);
 }
 
 /* Botón */
 .achievement button {
-  padding: 6px 12px;
+  padding: 6px var(--space-sm);
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   background: #f9c74f;
   color: #000;
   cursor: pointer;
@@ -72,16 +73,17 @@
 /* Badge de desbloqueado */
 .badge {
   display: inline-block;
-  padding: 5px 10px;
-  background: #ffffff;
-  color: #2ecc71;
-  border-radius: 6px;
-  font-size: 12px;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-text);
+  color: var(--color-success);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
   font-weight: bold;
 }
 
 /* Badge de bloqueado */
 .badge-locked {
   background: rgba(255, 255, 255, 0.1);
-  color: #9ca3af;
+  color: var(--color-text-muted);
 }
+```

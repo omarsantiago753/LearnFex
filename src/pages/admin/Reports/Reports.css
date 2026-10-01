@@ -1,0 +1,72 @@
+.reports {
+  padding: var(--spacing-lg);
+}
+
+.reports__title {
+  font-size: var(--font-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+/* RESUMEN */
+.reports__summary {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.card {
+  flex: 1;
+  background: var(--color-bg-secondary);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+/* ÁREAS */
+.reports__areas {
+  margin-top: var(--spacing-md);
+}
+
+.reports__area {
+  display: grid;
+  grid-template-columns: 1fr 3fr 60px;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.area-name {
+  text-transform: capitalize;
+}
+
+/* BARRA */
+.area-bar {
+  width: 100%;
+  height: 10px;
+  background: var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.area-bar__fill {
+  height: 100%;
+  background: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+/* TEXTO */
+.area-score {
+  text-align: right;
+  font-weight: bold;
+}
+
+/* ESTADOS */
+.reports__loading,
+.reports__error {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+}
+
+.reports__error {
+  color: red;
+}

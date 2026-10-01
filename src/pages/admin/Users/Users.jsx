@@ -224,7 +224,7 @@ function Users() {
 												<option value="estudiante">
 													Estudiante
 												</option>
-												<option value="admin">
+												<option value="administrador">
 													Administrador
 												</option>
 											</select>

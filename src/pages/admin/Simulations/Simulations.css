@@ -1,0 +1,94 @@
+.simulations {
+  padding: var(--spacing-lg);
+}
+
+.simulations__title {
+  font-size: var(--font-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+/* TABLA */
+.simulations__table {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/* HEADER */
+.simulations__header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  font-weight: bold;
+  padding: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* FILAS */
+.simulations__row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-secondary);
+  align-items: center;
+}
+
+/* ESTADO */
+.estado {
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  font-size: 12px;
+}
+
+.estado--activo {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.estado--inactivo {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+/* BOTÓN */
+.btn-delete {
+  padding: 6px 10px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: #ef4444;
+  color: white;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.btn-delete:hover {
+  opacity: 0.8;
+}
+
+.btn-delete:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* VACÍO */
+.empty {
+  text-align: center;
+  margin-top: var(--spacing-md);
+  color: var(--color-text-secondary);
+}
+
+/* PAGINACIÓN */
+.simulations__actions {
+  margin-top: var(--spacing-md);
+  text-align: center;
+}
+
+.simulations__actions button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: white;
+  cursor: pointer;
+}

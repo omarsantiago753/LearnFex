@@ -71,7 +71,7 @@ export const getAllQuizzes = async (cursor = null, pageSize = 10) => {
 
 	const snapshot = await getDocs(q);
 
-	const quizzes = snapshot.docs.map((docItem) => ({
+	const items = snapshot.docs.map((docItem) => ({
 		id: docItem.id,
 		...docItem.data(),
 	}));
@@ -79,8 +79,8 @@ export const getAllQuizzes = async (cursor = null, pageSize = 10) => {
 	const lastDoc = snapshot.docs[snapshot.docs.length - 1] || null;
 
 	return {
-		quizzes,
-		cursor: lastDoc,
+		items,
+		lastDoc,
 	};
 };
 

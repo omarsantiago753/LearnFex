@@ -1,6 +1,5 @@
 // src/pages/student/Ranking/Ranking.jsx
-
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Ranking.css";
 
 import { useAuth } from "../../../hooks/useAuth";
@@ -8,7 +7,6 @@ import {
   getPosicionUsuario,
   getRankingGeneral,
 } from "../../../repositories/rankingRepository";
-import { getUserById } from "../../../repositories/userRepository";
 
 const LIMITE_POR_PAGINA = 20;
 
@@ -40,30 +38,6 @@ function Ranking() {
   const [loading, setLoading] = useState(true);
   const [cargandoMas, setCargandoMas] = useState(false);
 
-  const perfilesCache = useRef(new Map());
-
-  const enriquecerConPerfil = async (rankingItems) => {
-    const enriquecidos = await Promise.all(
-      rankingItems.map(async (item) => {
-        if (!perfilesCache.current.has(item.usuarioId)) {
-          const perfil = await getUserById(item.usuarioId);
-
-          perfilesCache.current.set(item.usuarioId, perfil);
-        }
-
-        const perfil = perfilesCache.current.get(item.usuarioId);
-
-        return {
-          ...item,
-          nombre: perfil ? `${perfil.nombre} ${perfil.apellido || ""}`.trim() : "Estudiante",
-          nivel: perfil?.nivel ?? null,
-        };
-      })
-    );
-
-    return enriquecidos;
-  };
-
   useEffect(() => {
     const cargarRanking = async () => {
       try {
@@ -72,7 +46,7 @@ function Ranking() {
         const { items: primeraPagina, lastDoc: ultimoDoc } =
           await getRankingGeneral(LIMITE_POR_PAGINA);
 
-        const primeraPaginaConPerfil = await enriquecerConPerfil(primeraPagina);
+        const primeraPaginaConPerfil = primeraPagina;
 
         setItems(primeraPaginaConPerfil);
         setLastDoc(ultimoDoc);
@@ -80,7 +54,7 @@ function Ranking() {
 
         if (user?.uid) {
           const estaEnPagina = primeraPagina.some(
-            (item) => item.usuarioId === user.uid
+            (item) => item.usuarioId === user.uid,
           );
 
           if (!estaEnPagina) {
@@ -108,7 +82,7 @@ function Ranking() {
       const { items: siguientePagina, lastDoc: ultimoDoc } =
         await getRankingGeneral(LIMITE_POR_PAGINA, lastDoc);
 
-      const siguientePaginaConPerfil = await enriquecerConPerfil(siguientePagina);
+      const siguientePaginaConPerfil = siguientePagina;
 
       setItems((previos) => [...previos, ...siguientePaginaConPerfil]);
       setLastDoc(ultimoDoc);
@@ -132,20 +106,16 @@ function Ranking() {
 
   return (
     <div className="ranking-page">
-
       {/* Encabezado */}
       <header className="ranking-header">
         <div>
           <h1>🏆 Ranking</h1>
-          <p>
-            Compara tu progreso y posición con otros estudiantes.
-          </p>
+          <p>Compara tu progreso y posición con otros estudiantes.</p>
         </div>
       </header>
 
       {/* Podio */}
       <section className="ranking-podium">
-
         {podio.map((item, index) => (
           <div
             key={item.id}
@@ -153,34 +123,25 @@ function Ranking() {
               item.usuarioId === user?.uid ? "current-user" : ""
             }`}
           >
-            <div className="podium-medal">
-              {getPositionIcon(index + 1)}
-            </div>
+            <div className="podium-medal">{getPositionIcon(index + 1)}</div>
 
-            <div className="student-avatar">
-              {getInitials(item.nombre)}
-            </div>
+            <div className="student-avatar">{getInitials(item.nombre)}</div>
 
             <h2>{item.nombre || "Estudiante"}</h2>
 
-            <strong>
-              {(item.puntajeAcumulado || 0).toLocaleString()} pts
-            </strong>
+            <strong>{(item.puntajeAcumulado || 0).toLocaleString()} pts</strong>
           </div>
         ))}
-
       </section>
 
       {/* Tabla */}
       <section className="ranking-table-container">
-
         <div className="ranking-table-header">
           <h2>Clasificación</h2>
           <span>{items.length} estudiantes</span>
         </div>
 
         <div className="ranking-table">
-
           <div className="ranking-row ranking-row-title">
             <span>Pos.</span>
             <span>Estudiante</span>
@@ -195,42 +156,31 @@ function Ranking() {
                 item.usuarioId === user?.uid ? "current-ranking-user" : ""
               }`}
             >
-
               <div className="ranking-position">
                 {getPositionIcon(index + 1)}
               </div>
 
               <div className="ranking-student">
-
-                <div className="ranking-avatar">
-                  {getInitials(item.nombre)}
-                </div>
+                <div className="ranking-avatar">{getInitials(item.nombre)}</div>
 
                 <div>
                   <strong>{item.nombre || "Estudiante"}</strong>
 
                   {item.usuarioId === user?.uid && (
-                    <span className="you-badge">
-                      Tú
-                    </span>
+                    <span className="you-badge">Tú</span>
                   )}
                 </div>
-
               </div>
 
               <div>
-                <span className="level-badge">
-                  {item.nivel || "-"}
-                </span>
+                <span className="level-badge">{item.nivel || "-"}</span>
               </div>
 
               <div className="ranking-points">
                 {(item.puntajeAcumulado || 0).toLocaleString()} pts
               </div>
-
             </div>
           ))}
-
         </div>
 
         {hayMas && (
@@ -249,26 +199,19 @@ function Ranking() {
       {/* Información del usuario */}
       {miPosicion && (
         <section className="my-ranking-card">
-
-          <div className="my-ranking-icon">
-            📊
-          </div>
+          <div className="my-ranking-icon">📊</div>
 
           <div className="my-ranking-info">
             <h3>Tu posición actual</h3>
-            <p>
-              Sigue completando quizzes para subir posiciones.
-            </p>
+            <p>Sigue completando quizzes para subir posiciones.</p>
           </div>
 
           <div className="my-ranking-position">
             <strong>#{miPosicion.posicion}</strong>
             <span>posición</span>
           </div>
-
         </section>
       )}
-
     </div>
   );
 }

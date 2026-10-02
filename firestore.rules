@@ -106,5 +106,11 @@ service cloud.firestore {
       allow create: if estaAutenticado();
       allow update, delete: if false;
     }
+
+    // Configuracion general de la aplicacion (nombre, descripcion, email de soporte)
+    match /configuracion/{docId} {
+      allow read: if estaAutenticado();
+      allow write: if esAdministrador();
+    }
   }
 }

@@ -20,6 +20,7 @@ import Questions from "../pages/admin/Questions/Questions";
 import Reports from "../pages/admin/Reports/Reports";
 import Simulations from "../pages/admin/Simulations/Simulations";
 import Settings from "../pages/admin/Settings/Settings";
+import Configuration from "../pages/admin/Configuration/Configuration";
 
 import PrivateRoutes from "./PrivateRoutes";
 import AdminRoute from "./AdminRoute";
@@ -70,10 +71,8 @@ function AppRoutes() {
 					<Route path="/admin/preguntas" element={<Questions />} />
 					<Route path="/admin/reportes" element={<Reports />} />
 					<Route path="/admin/simulacros" element={<Simulations />} />
-					<Route path="/admin/configuracion" element={<Settings />} />
+					<Route path="/admin/configuracion" element={<Configuration />} />
 
-					{/* Settings.jsx es la pantalla de "Configuración y catálogo de logros"
-					([Sprint 6-14]) — no existe una pantalla de logros separada todavía. */}
 					<Route path="/admin/logros" element={<Settings />} />
 				</Route>
 			</Route>

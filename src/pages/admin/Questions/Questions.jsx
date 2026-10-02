@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import {
 	createQuestion,
 	deleteQuestion,
+	getAllQuestions,
 	getQuestionsByArea,
 	updateQuestion,
 } from "../../../repositories/questionRepository";
@@ -39,58 +40,16 @@ function Questions() {
 	const [editandoId, setEditandoId] = useState(null);
 	const [form, setForm] = useState(initialForm);
 
-	/*
-	 * Cargar preguntas.
-	 *
-	 * getQuestionsByArea necesita un areaId, por lo que cuando
-	 * no se selecciona un área cargamos las preguntas agrupando
-	 * los areaId que ya existen en las preguntas.
-	 */
 	const cargarPreguntas = async () => {
 		try {
 			setLoading(true);
 			setError("");
 
-			if (areaFiltro) {
-				const data = await getQuestionsByArea(
-					areaFiltro,
-					dificultadFiltro || undefined
-				);
+			const data = areaFiltro
+				? await getQuestionsByArea(areaFiltro, dificultadFiltro || undefined)
+				: await getAllQuestions(dificultadFiltro || undefined);
 
-				setPreguntas(data);
-				return;
-			}
-
-			/*
-			 * El repositorio no tiene getAllQuestions().
-			 * Obtenemos los areaId conocidos desde las preguntas
-			 * actualmente cargadas.
-			 *
-			 * Para una solución definitiva sería recomendable agregar
-			 * getAllQuestions() al repository.
-			 */
-			if (preguntas.length > 0) {
-				const areas = [
-					...new Set(
-						preguntas
-							.map((pregunta) => pregunta.areaId)
-							.filter(Boolean)
-					),
-				];
-
-				const resultados = await Promise.all(
-					areas.map((areaId) =>
-						getQuestionsByArea(
-							areaId,
-							dificultadFiltro || undefined
-						)
-					)
-				);
-
-				setPreguntas(resultados.flat());
-			} else {
-				setPreguntas([]);
-			}
+			setPreguntas(data);
 		} catch (err) {
 			console.error(err);
 			setError("No se pudieron cargar las preguntas.");
@@ -100,15 +59,7 @@ function Questions() {
 	};
 
 	useEffect(() => {
-		/*
-		 * Si no hay filtro de área, la primera carga no puede obtener
-		 * preguntas porque el repository actual requiere areaId.
-		 */
-		if (areaFiltro) {
-			cargarPreguntas();
-		} else {
-			setLoading(false);
-		}
+		cargarPreguntas();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [areaFiltro, dificultadFiltro]);
 
@@ -163,7 +114,7 @@ function Questions() {
 			enunciado: pregunta.enunciado || "",
 			opciones:
 				pregunta.opciones?.length >= 2
-					? [...pregunta.opciones]
+					? pregunta.opciones.map((opcion) => opcion?.text ?? "")
 					: ["", ""],
 			respuestaCorrecta: pregunta.respuestaCorrecta || "",
 			dificultad: pregunta.dificultad || "media",
@@ -251,7 +202,11 @@ function Questions() {
 			return "Debes seleccionar una respuesta correcta.";
 		}
 
-		if (!opcionesValidas.includes(form.respuestaCorrecta.trim())) {
+		const idsValidos = opcionesValidas.map((_, index) =>
+			String.fromCharCode(65 + index)
+		);
+
+		if (!idsValidos.includes(form.respuestaCorrecta.trim())) {
 			return "La respuesta correcta debe coincidir con una de las opciones.";
 		}
 
@@ -268,11 +223,16 @@ function Questions() {
 			return;
 		}
 
+		const opcionesConTexto = form.opciones
+			.map((opcion) => opcion.trim())
+			.filter(Boolean);
+
 		const datos = {
 			enunciado: form.enunciado.trim(),
-			opciones: form.opciones
-				.map((opcion) => opcion.trim())
-				.filter(Boolean),
+			opciones: opcionesConTexto.map((text, index) => ({
+				id: String.fromCharCode(65 + index),
+				text,
+			})),
 			respuestaCorrecta: form.respuestaCorrecta.trim(),
 			dificultad: form.dificultad,
 			explicacion: form.explicacion.trim(),
@@ -453,18 +413,6 @@ function Questions() {
 					<div className="questions-empty">
 						Cargando preguntas...
 					</div>
-				) : !areaFiltro ? (
-					<div className="questions-empty">
-						<p>
-							Selecciona un <strong>areaId</strong> para
-							cargar las preguntas.
-						</p>
-
-						<small>
-							El repository actual requiere un areaId
-							para consultar Firestore.
-						</small>
-					</div>
 				) : preguntasFiltradas.length === 0 ? (
 					<div className="questions-empty">
 						<p>No se encontraron preguntas.</p>
@@ -512,7 +460,7 @@ function Questions() {
 											(opcion, opcionIndex) => (
 												<div
 													className={
-														opcion ===
+														opcion.id ===
 														pregunta.respuestaCorrecta
 															? "question-option correct"
 															: "question-option"
@@ -520,13 +468,10 @@ function Questions() {
 													key={`${pregunta.id}-${opcionIndex}`}
 												>
 													<span>
-														{String.fromCharCode(
-															65 +
-																opcionIndex
-														)}
+														{opcion.id}
 													</span>
 
-													{opcion}
+													{opcion.text}
 												</div>
 											)
 										)}
@@ -773,9 +718,7 @@ function Questions() {
 											) => (
 												<option
 													key={`${opcion}-${index}`}
-													value={
-														opcion
-													}
+													value={String.fromCharCode(65 + index)}
 												>
 													{String.fromCharCode(
 														65 +

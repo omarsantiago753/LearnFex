@@ -45,6 +45,19 @@ export const getQuestionsByArea = async (areaId, dificultad, cantidad) => {
 	return cantidad ? preguntas.slice(0, cantidad) : preguntas;
 };
 
+export const getAllQuestions = async (dificultad) => {
+	const restricciones = dificultad ? [where("dificultad", "==", dificultad)] : [];
+
+	const ref = query(collection(db, "preguntas"), ...restricciones);
+
+	const snapshot = await getDocs(ref);
+
+	return snapshot.docs.map((docSnap) => ({
+		id: docSnap.id,
+		...docSnap.data(),
+	}));
+};
+
 export const getQuestionById = async (id) => {
 	const ref = doc(db, "preguntas", id);
 

@@ -18,7 +18,7 @@
 
 .users-header p {
 	margin: 0;
-	color: #666;
+	color: var(--color-text-secondary);
 	font-size: 16px;
 }
 
@@ -38,7 +38,9 @@
 .users-toolbar input {
 	width: 100%;
 	padding: 12px 14px;
-	border: 1px solid #d1d5db;
+	background-color: var(--color-surface);
+	color: var(--color-text);
+	border: 1px solid var(--color-border);
 	border-radius: 8px;
 	font-size: 15px;
 	box-sizing: border-box;
@@ -46,16 +48,16 @@
 
 .users-toolbar input:focus {
 	outline: none;
-	border-color: #2563eb;
-	box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+	border-color: var(--color-primary);
+	box-shadow: 0 0 0 3px rgba(53, 201, 255, 0.12);
 }
 
 .users-error {
 	margin: 0 0 20px;
 	padding: 12px 16px;
 	border-radius: 8px;
-	background: #fee2e2;
-	color: #991b1b;
+	background: var(--color-error-bg);
+	color: var(--color-error);
 }
 
 .users-content {
@@ -65,8 +67,8 @@
 .users-table-wrapper {
 	width: 100%;
 	overflow-x: auto;
-	background: #ffffff;
-	border: 1px solid #e5e7eb;
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
 	border-radius: 12px;
 }
 
@@ -80,20 +82,20 @@
 .users-table td {
 	padding: 16px;
 	text-align: left;
-	border-bottom: 1px solid #e5e7eb;
+	border-bottom: 1px solid var(--color-border);
 	vertical-align: middle;
 }
 
 .users-table th {
-	background: #f9fafb;
+	background: var(--color-surface-nav);
 	font-size: 14px;
 	font-weight: 700;
-	color: #374151;
+	color: var(--color-text);
 }
 
 .users-table td {
 	font-size: 14px;
-	color: #374151;
+	color: var(--color-text);
 }
 
 .users-table tbody tr:last-child td {
@@ -101,21 +103,22 @@
 }
 
 .users-table tbody tr:hover {
-	background: #f9fafb;
+	background: var(--color-surface-hover);
 }
 
 .users-table select {
 	min-width: 140px;
 	padding: 8px 10px;
-	border: 1px solid #d1d5db;
+	border: 1px solid var(--color-border);
 	border-radius: 6px;
-	background: #ffffff;
+	background: var(--color-surface);
+	color: var(--color-text);
 	font-size: 14px;
 }
 
 .users-table select:focus {
 	outline: none;
-	border-color: #2563eb;
+	border-color: var(--color-primary);
 }
 
 .users-table select:disabled {
@@ -133,13 +136,13 @@
 }
 
 .user-status--active {
-	background: #dcfce7;
-	color: #166534;
+	background: var(--color-success-bg);
+	color: var(--color-success);
 }
 
 .user-status--inactive {
-	background: #fee2e2;
-	color: #991b1b;
+	background: var(--color-error-bg);
+	color: var(--color-error);
 }
 
 .users-actions {
@@ -175,35 +178,35 @@
 }
 
 .button--primary {
-	background: #2563eb;
-	color: #ffffff;
+	background: var(--color-primary);
+	color: var(--color-text);
 }
 
 .button--secondary {
-	background: #e5e7eb;
-	color: #374151;
+	background: var(--color-surface-hover);
+	color: var(--color-text);
 }
 
 .button--danger {
-	background: #dc2626;
-	color: #ffffff;
+	background: var(--color-error);
+	color: var(--color-text);
 }
 
 .button--success {
-	background: #16a34a;
-	color: #ffffff;
+	background: var(--color-success);
+	color: var(--color-bg);
 }
 
 .users-empty {
 	padding: 40px !important;
 	text-align: center !important;
-	color: #6b7280 !important;
+	color: var(--color-text-muted) !important;
 }
 
 .users-loading {
 	margin: 20px 0;
 	text-align: center;
-	color: #6b7280;
+	color: var(--color-text-muted);
 }
 
 .users-pagination {
@@ -228,7 +231,8 @@
 	width: min(500px, 100%);
 	max-height: 90vh;
 	overflow-y: auto;
-	background: #ffffff;
+	background: var(--color-surface);
+	color: var(--color-text);
 	border-radius: 12px;
 	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
@@ -238,7 +242,7 @@
 	align-items: center;
 	justify-content: space-between;
 	padding: 20px 24px;
-	border-bottom: 1px solid #e5e7eb;
+	border-bottom: 1px solid var(--color-border);
 }
 
 .user-detail-header h2 {
@@ -251,13 +255,13 @@
 	background: transparent;
 	font-size: 28px;
 	line-height: 1;
-	color: #6b7280;
+	color: var(--color-text-muted);
 	cursor: pointer;
 	padding: 4px 8px;
 }
 
 .user-detail-close:hover {
-	color: #111827;
+	color: var(--color-text);
 }
 
 .user-detail-content {
@@ -270,7 +274,7 @@
 	justify-content: space-between;
 	gap: 20px;
 	padding: 14px 0;
-	border-bottom: 1px solid #f3f4f6;
+	border-bottom: 1px solid var(--color-border-alt);
 }
 
 .user-detail-row:last-child {
@@ -278,13 +282,13 @@
 }
 
 .user-detail-row span {
-	color: #6b7280;
+	color: var(--color-text-muted);
 	font-size: 14px;
 }
 
 .user-detail-row strong {
 	text-align: right;
-	color: #111827;
+	color: var(--color-text);
 	font-size: 14px;
 	word-break: break-word;
 }
@@ -293,7 +297,7 @@
 	display: flex;
 	justify-content: flex-end;
 	padding: 20px 24px;
-	border-top: 1px solid #e5e7eb;
+	border-top: 1px solid var(--color-border);
 }
 
 @media (max-width: 768px) {

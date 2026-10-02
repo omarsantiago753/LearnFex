@@ -62,3 +62,36 @@ export const getPlatformStats = async () => {
 		promedioPorArea,
 	};
 };
+
+/**
+ * Actividad reciente de la plataforma para el panel de administracion:
+ * los ultimos resultados registrados (mas reciente primero), con el
+ * nombre del usuario que los realizo.
+ */
+export const getRecentActivity = async (limite = 8) => {
+	const [resultados, usuarios] = await Promise.all([
+		getAllResultados(),
+		getAllUsuarios(),
+	]);
+
+	const cacheUsuarios = new Map();
+
+	usuarios.forEach((usuario) => {
+		const nombre = `${usuario.nombre ?? ""} ${usuario.apellido ?? ""}`.trim();
+
+		cacheUsuarios.set(usuario.id, nombre || "Sin nombre");
+	});
+
+	const resultadosOrdenados = [...resultados].sort((a, b) => {
+		const fechaA = a.fecha?.toMillis ? a.fecha.toMillis() : 0;
+		const fechaB = b.fecha?.toMillis ? b.fecha.toMillis() : 0;
+
+		return fechaB - fechaA;
+	});
+
+	return resultadosOrdenados.slice(0, limite).map((resultado) => ({
+		usuarioNombre: cacheUsuarios.get(resultado.usuarioId) ?? "Usuario desconocido",
+		puntaje: resultado.puntaje ?? 0,
+		fecha: resultado.fecha ?? null,
+	}));
+};

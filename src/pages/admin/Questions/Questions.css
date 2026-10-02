@@ -2,7 +2,7 @@
 	width: 100%;
 	padding: 32px;
 	box-sizing: border-box;
-	color: #111827;
+	color: var(--color-text);
 }
 
 .questions-header {
@@ -20,7 +20,7 @@
 
 .questions-header p {
 	margin: 0;
-	color: #666;
+	color: var(--color-text-secondary);
 	font-size: 16px;
 }
 
@@ -29,7 +29,7 @@
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 0.04em;
-	color: #2563eb;
+	color: var(--color-primary);
 }
 
 .questions-primary-button,
@@ -45,18 +45,18 @@
 }
 
 .questions-primary-button {
-	background: #2563eb;
-	color: #ffffff;
+	background: var(--color-primary);
+	color: var(--color-text);
 }
 
 .questions-secondary-button {
-	background: #e5e7eb;
-	color: #374151;
+	background: var(--color-surface-hover);
+	color: var(--color-text);
 }
 
 .questions-cancel-button {
 	background: transparent;
-	color: #6b7280;
+	color: var(--color-text-muted);
 }
 
 .questions-primary-button:hover,
@@ -81,7 +81,9 @@
 .questions-filters input,
 .questions-filters select {
 	padding: 10px 12px;
-	border: 1px solid #d1d5db;
+	background-color: var(--color-surface);
+	color: var(--color-text);
+	border: 1px solid var(--color-border);
 	border-radius: 8px;
 	font-size: 14px;
 	box-sizing: border-box;
@@ -100,8 +102,8 @@
 	margin: 0 0 20px;
 	padding: 12px 16px;
 	border-radius: 8px;
-	background: #fee2e2;
-	color: #991b1b;
+	background: var(--color-error-bg);
+	color: var(--color-error);
 }
 
 .questions-content-header {
@@ -112,16 +114,16 @@
 }
 
 .questions-content-header span {
-	color: #6b7280;
+	color: var(--color-text-muted);
 	font-size: 14px;
 }
 
 .questions-empty {
 	padding: 40px;
 	text-align: center;
-	color: #6b7280;
-	background: #ffffff;
-	border: 1px solid #e5e7eb;
+	color: var(--color-text-muted);
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
 	border-radius: 12px;
 }
 
@@ -135,14 +137,14 @@
 	display: flex;
 	gap: 16px;
 	padding: 16px 20px;
-	background: #ffffff;
-	border: 1px solid #e5e7eb;
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
 	border-radius: 12px;
 }
 
 .question-admin-number {
 	flex-shrink: 0;
-	color: #9ca3af;
+	color: var(--color-text-muted);
 	font-weight: 700;
 }
 
@@ -172,28 +174,28 @@
 }
 
 .question-area {
-	background: #dbeafe;
-	color: #1d4ed8;
+	background: rgba(53, 201, 255, 0.15);
+	color: var(--color-primary);
 }
 
 .question-difficulty {
-	background: #e5e7eb;
-	color: #374151;
+	background: var(--color-surface-hover);
+	color: var(--color-text);
 }
 
 .difficulty-facil {
-	background: #dcfce7;
-	color: #166534;
+	background: var(--color-success-bg);
+	color: var(--color-success);
 }
 
 .difficulty-media {
-	background: #fef9c3;
-	color: #854d0e;
+	background: rgba(234, 179, 8, 0.15);
+	color: #eab308;
 }
 
 .difficulty-dificil {
-	background: #fee2e2;
-	color: #991b1b;
+	background: var(--color-error-bg);
+	color: var(--color-error);
 }
 
 .question-options {
@@ -207,21 +209,21 @@
 	gap: 8px;
 	padding: 6px 10px;
 	border-radius: 6px;
-	background: #f9fafb;
+	background: var(--color-surface-alt);
 	font-size: 14px;
 }
 
 .question-option span {
 	font-weight: 700;
-	color: #9ca3af;
+	color: var(--color-text-muted);
 }
 
 .question-option.correct {
-	background: #dcfce7;
+	background: var(--color-success-bg);
 }
 
 .question-option.correct span {
-	color: #166534;
+	color: var(--color-success);
 }
 
 .question-admin-actions {
@@ -238,13 +240,13 @@
 	font-size: 13px;
 	font-weight: 600;
 	cursor: pointer;
-	background: #e5e7eb;
-	color: #374151;
+	background: var(--color-surface-hover);
+	color: var(--color-text);
 }
 
 .question-admin-actions button.delete {
-	background: #fee2e2;
-	color: #991b1b;
+	background: var(--color-error-bg);
+	color: var(--color-error);
 }
 
 .questions-modal-overlay {
@@ -263,8 +265,8 @@
 	width: min(560px, 100%);
 	max-height: 90vh;
 	overflow-y: auto;
-	background: #ffffff;
-	color: #111827;
+	background: var(--color-surface);
+	color: var(--color-text);
 	border-radius: 12px;
 	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 	padding: 24px;
@@ -288,7 +290,7 @@
 	background: transparent;
 	font-size: 24px;
 	line-height: 1;
-	color: #6b7280;
+	color: var(--color-text-muted);
 	cursor: pointer;
 }
 
@@ -310,7 +312,9 @@
 .form-field textarea {
 	width: 100%;
 	padding: 10px 12px;
-	border: 1px solid #d1d5db;
+	background-color: var(--color-surface);
+	color: var(--color-text);
+	border: 1px solid var(--color-border);
 	border-radius: 8px;
 	font-size: 14px;
 	box-sizing: border-box;

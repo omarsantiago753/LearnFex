@@ -15,6 +15,11 @@ import Achievements from "../pages/student/Achievements/Achievements";
 import Profile from "../pages/student/Profile/Profile";
 
 import Dashboard from "../pages/admin/Dashboard/Dashboard";
+import Users from "../pages/admin/Users/Users";
+import Questions from "../pages/admin/Questions/Questions";
+import Reports from "../pages/admin/Reports/Reports";
+import Simulations from "../pages/admin/Simulations/Simulations";
+import Settings from "../pages/admin/Settings/Settings";
 
 import PrivateRoutes from "./PrivateRoutes";
 import AdminRoute from "./AdminRoute";
@@ -29,10 +34,7 @@ function AppRoutes() {
 
 			<Route path="/registro" element={<Register />} />
 
-			<Route
-				path="/recuperar-contrasena"
-				element={<ForgotPassword />}
-			/>
+			<Route path="/recuperar-contrasena" element={<ForgotPassword />} />
 
 			<Route element={<PrivateRoutes />}>
 				<Route element={<StudentLayout />}>
@@ -51,15 +53,9 @@ function AppRoutes() {
 
 				{/* Flujo de resolución de pruebas: pila de rutas independiente del layout
 				principal (Navbar/BottomNavigation), tal como lo describe el SDD 5.1. */}
-				<Route
-					path="/practica/cuestionario"
-					element={<Quiz />}
-				/>
+				<Route path="/practica/cuestionario" element={<Quiz />} />
 
-				<Route
-					path="/resultados/:resultadoId"
-					element={<Results />}
-				/>
+				<Route path="/resultados/:resultadoId" element={<Results />} />
 
 				<Route
 					path="/resultados/:resultadoId/retroalimentacion"
@@ -70,6 +66,15 @@ function AppRoutes() {
 			<Route element={<AdminRoute />}>
 				<Route element={<AdminLayout />}>
 					<Route path="/admin" element={<Dashboard />} />
+					<Route path="/admin/usuarios" element={<Users />} />
+					<Route path="/admin/preguntas" element={<Questions />} />
+					<Route path="/admin/reportes" element={<Reports />} />
+					<Route path="/admin/simulacros" element={<Simulations />} />
+					<Route path="/admin/configuracion" element={<Settings />} />
+
+					{/* Settings.jsx es la pantalla de "Configuración y catálogo de logros"
+					([Sprint 6-14]) — no existe una pantalla de logros separada todavía. */}
+					<Route path="/admin/logros" element={<Settings />} />
 				</Route>
 			</Route>
 		</Routes>

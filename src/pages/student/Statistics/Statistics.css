@@ -5,14 +5,22 @@
 .estadistica-container {
   width: 100%;
   min-height: 100vh;
-  padding: var(--space-xl);
+  padding: 32px;
+
   box-sizing: border-box;
 
   background: var(--color-bg);
   color: var(--color-text);
 
-  font-family: var(--font-family-base);
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 }
+
 
 /* =========================================================
    ENCABEZADO
@@ -21,21 +29,22 @@
 .estadistica-header {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto var(--space-xl);
+
+  margin: 0 auto 30px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  gap: var(--space-md);
+  gap: 20px;
 }
 
 .estadistica-label {
-  margin: 0 0 var(--space-xs);
+  margin: 0 0 7px;
 
   color: var(--color-primary);
 
-  font-size: var(--font-size-xs);
+  font-size: 11px;
   font-weight: 700;
 
   letter-spacing: 1.5px;
@@ -44,40 +53,44 @@
 .estadistica-header h1 {
   margin: 0;
 
-  font-size: var(--font-size-xl);
+  font-size: 32px;
   font-weight: 700;
 }
 
 .estadistica-description {
   max-width: 600px;
-  margin: var(--space-xs) 0 0;
 
-  color: var(--color-text-secondary);
+  margin: 9px 0 0;
 
-  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-base);
   line-height: 1.6;
 }
 
 .estadistica-practice-button {
-  padding: var(--space-sm) var(--space-md);
+  padding: 11px 20px;
 
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: 9px;
 
   background: var(--color-primary);
-  color: white;
+  color: var(--color-bg);
 
   font-size: var(--font-size-sm);
   font-weight: 600;
 
   cursor: pointer;
-  transition: 0.2s ease;
+
+  transition: var(--transition-base);
 }
 
 .estadistica-practice-button:hover {
-  opacity: 0.9;
+  background: var(--color-primary-alt);
   transform: translateY(-1px);
+  color: var(--color-text);
 }
+
 
 /* =========================================================
    TARJETAS DE ESTADÍSTICAS
@@ -86,29 +99,31 @@
 .estadistica-cards {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto var(--space-xl);
+
+  margin: 0 auto 35px;
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 
-  gap: var(--space-md);
+  gap: var(--space-lg);
 }
 
 .estadistica-card {
-  padding: var(--space-md);
+  padding: 20px;
 
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-alt);
+  border-radius: 15px;
 
-  background: var(--color-surface);
+  background: var(--color-surface-alt);
 
   transition:
-    transform 0.2s ease,
-    border-color 0.2s ease;
+    transform var(--transition-base),
+    border-color var(--transition-base);
 }
 
 .estadistica-card:hover {
   transform: translateY(-3px);
+
   border-color: var(--color-primary);
 }
 
@@ -118,7 +133,7 @@
 
   gap: var(--space-xs);
 
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted);
 
   font-size: var(--font-size-sm);
 }
@@ -127,9 +142,9 @@
   width: 38px;
   height: 38px;
 
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
 
-  background: var(--color-surface-alt);
+  background: var(--color-surface-hover);
 
   display: flex;
   align-items: center;
@@ -137,28 +152,29 @@
 
   color: var(--color-primary);
 
-  font-size: var(--font-size-sm);
+  font-size: 16px;
   font-weight: 700;
 }
 
 .estadistica-card-value {
   display: block;
 
-  margin-top: var(--space-md);
+  margin-top: 18px;
 
   color: var(--color-text);
 
-  font-size: var(--font-size-xl);
+  font-size: 28px;
   line-height: 1;
 }
 
 .estadistica-card p {
-  margin: var(--space-xs) 0 0;
+  margin: 8px 0 0;
 
-  color: var(--color-text-muted);
+  color: var(--color-text-faint);
 
   font-size: var(--font-size-xs);
 }
+
 
 /* =========================================================
    SECCIONES
@@ -167,70 +183,73 @@
 .estadistica-section {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto var(--space-xl);
+
+  margin: 0 auto 30px;
 }
 
 .estadistica-section-header {
-  margin-bottom: var(--space-md);
+  margin-bottom: 17px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  gap: var(--space-sm);
+  gap: 15px;
 }
 
 .estadistica-section-header h2 {
-  margin: 0 0 var(--space-xs);
+  margin: 0 0 5px;
 
-  font-size: var(--font-size-lg);
+  font-size: 20px;
 }
 
 .estadistica-section-header p {
   margin: 0;
 
-  color: var(--color-text-muted);
+  color: var(--color-text-faint);
 
   font-size: var(--font-size-sm);
 }
 
 .estadistica-link-button {
-  padding: var(--space-xs) var(--space-sm);
+  padding: 8px 13px;
 
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
 
   background: transparent;
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted);
 
   font-size: var(--font-size-xs);
 
   cursor: pointer;
-  transition: 0.2s ease;
+
+  transition: var(--transition-base);
 }
 
 .estadistica-link-button:hover {
-  background: var(--color-surface-alt);
+  background: var(--color-surface-hover);
   color: var(--color-text);
 }
+
 
 /* =========================================================
    PROGRESO POR ÁREA
 ========================================================= */
 
 .estadistica-progress-list {
-  padding: var(--space-xs) var(--space-lg);
+  padding: 5px 22px;
 
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-alt);
+  border-radius: 15px;
 
-  background: var(--color-surface);
+  background: var(--color-surface-alt);
 }
 
 .estadistica-progress-item {
-  padding: var(--space-md) 0;
+  padding: 18px 0;
 
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border-alt);
 }
 
 .estadistica-progress-item:last-child {
@@ -238,7 +257,7 @@
 }
 
 .estadistica-progress-info > div:first-child {
-  margin-bottom: var(--space-xs);
+  margin-bottom: 9px;
 
   display: flex;
   justify-content: space-between;
@@ -246,13 +265,13 @@
 }
 
 .estadistica-progress-info strong {
-  color: var(--color-text);
+  color: var(--color-text-secondary);
 
   font-size: var(--font-size-sm);
 }
 
 .estadistica-progress-info span {
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted);
 
   font-size: var(--font-size-xs);
 }
@@ -263,7 +282,7 @@
 
   overflow: hidden;
 
-  border-radius: 999px;
+  border-radius: 20px;
 
   background: var(--color-bg);
 }
@@ -271,12 +290,13 @@
 .estadistica-progress-fill {
   height: 100%;
 
-  border-radius: 999px;
+  border-radius: 20px;
 
   background: var(--color-primary);
 
   transition: width 0.5s ease;
 }
+
 
 /* =========================================================
    RESULTADOS
@@ -285,29 +305,86 @@
 .estadistica-results {
   overflow: hidden;
 
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-alt);
+  border-radius: 15px;
 
-  background: var(--color-surface);
+  background: var(--color-surface-alt);
 }
 
 .estadistica-result {
-  padding: var(--space-md);
+  padding: 17px 20px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border-alt);
 }
 
 .estadistica-result:last-child {
   border-bottom: none;
 }
 
+.estadistica-result-info {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+}
+
 .estadistica-result-icon {
-  background: var(--color-surface-alt);
+  width: 40px;
+  height: 40px;
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-surface-hover);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   color: var(--color-primary);
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.estadistica-result-info strong {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-base);
+}
+
+.estadistica-result-info span {
+  color: var(--color-text-faint);
+
+  font-size: var(--font-size-xs);
+}
+
+.estadistica-result-score {
+  display: flex;
+  align-items: center;
+
+  gap: var(--space-sm);
+}
+
+.estadistica-result-score span {
+  color: var(--color-text-faint);
+
+  font-size: 11px;
+}
+
+.estadistica-result-score strong {
+  min-width: 48px;
+
+  text-align: right;
+
+  font-size: var(--font-size-base);
 }
 
 .estadistica-result-good {
@@ -315,25 +392,58 @@
 }
 
 .estadistica-result-medium {
-  color: var(--color-primary);
+  color: #facc15;
 }
 
 .estadistica-result-low {
   color: var(--color-error);
 }
 
+
+/* =========================================================
+   ESTADO VACÍO
+========================================================= */
+
+.estadistica-empty {
+  min-height: 150px;
+
+  padding: 25px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.estadistica-empty span {
+  margin-bottom: var(--space-xs);
+
+  font-size: 28px;
+}
+
+.estadistica-empty p {
+  margin: 0 0 15px;
+
+  color: var(--color-text-faint);
+
+  font-size: var(--font-size-sm);
+}
+
+
 /* =========================================================
    BOTÓN GENERAL
 ========================================================= */
 
 .estadistica-button {
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-xs) var(--space-lg);
 
   border: none;
   border-radius: var(--radius-sm);
 
   background: var(--color-primary);
-  color: white;
+  color: var(--color-bg);
 
   font-size: var(--font-size-xs);
   font-weight: 600;
@@ -342,32 +452,247 @@
 }
 
 .estadistica-button:hover {
-  opacity: 0.9;
+  background: var(--color-primary-alt);
+  color: var(--color-text);
 }
+
+
+/* =========================================================
+   CONSEJO
+========================================================= */
+
+.estadistica-tip {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto 20px;
+  padding: 20px 23px;
+
+  box-sizing: border-box;
+
+  border: 1px solid var(--color-border-alt);
+  border-radius: 15px;
+
+  background: var(--color-surface-alt);
+
+  display: flex;
+  align-items: center;
+
+  gap: var(--space-lg);
+}
+
+.estadistica-tip-icon {
+  width: 45px;
+  height: 45px;
+
+  flex-shrink: 0;
+
+  border-radius: 11px;
+
+  background: var(--color-surface-hover);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;
+}
+
+.estadistica-tip > div:nth-child(2) {
+  flex: 1;
+}
+
+.estadistica-tip h2 {
+  margin: 0 0 5px;
+
+  font-size: 16px;
+}
+
+.estadistica-tip p {
+  margin: 0;
+
+  color: var(--color-text-faint);
+
+  font-size: var(--font-size-xs);
+  line-height: 1.5;
+}
+
+.estadistica-tip-button {
+  padding: 9px var(--space-lg);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  background: var(--color-surface-hover);
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.estadistica-tip-button:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-bg);
+}
+
 
 /* =========================================================
    LOADING
 ========================================================= */
 
 .estadistica-loading {
-  color: var(--color-text-secondary);
+  min-height: 70vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--color-text-muted);
 }
 
 .estadistica-spinner {
-  border: 3px solid var(--color-border);
+  width: 35px;
+  height: 35px;
+
+  margin-bottom: 15px;
+
+  border: 3px solid var(--color-border-alt);
   border-top-color: var(--color-primary);
+
+  border-radius: 50%;
+
+  animation: estadistica-spin 0.8s linear infinite;
 }
+
+@keyframes estadistica-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 
 /* =========================================================
    ERROR
 ========================================================= */
 
 .estadistica-error {
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
+  max-width: 500px;
+
+  margin: 100px auto;
+
+  padding: 35px;
+
+  border: 1px solid var(--color-border-alt);
+  border-radius: 15px;
+
+  background: var(--color-surface-alt);
+
+  text-align: center;
 }
 
 .estadistica-error-icon {
-  background: rgba(255, 0, 0, 0.1);
+  width: 45px;
+  height: 45px;
+
+  margin: 0 auto 15px;
+
+  border-radius: 50%;
+
+  background: var(--color-error-bg);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   color: var(--color-error);
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.estadistica-error h2 {
+  margin: 0 0 8px;
+
+  font-size: var(--font-size-lg);
+}
+
+.estadistica-error p {
+  margin: 0 0 20px;
+
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-sm);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+  .estadistica-container {
+    padding: 25px;
+  }
+
+  .estadistica-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .estadistica-container {
+    padding: 18px;
+  }
+
+  .estadistica-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .estadistica-header h1 {
+    font-size: 27px;
+  }
+
+  .estadistica-practice-button {
+    width: 100%;
+  }
+
+  .estadistica-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .estadistica-section-header {
+    align-items: flex-start;
+  }
+
+  .estadistica-result {
+    gap: var(--space-xs);
+  }
+
+  .estadistica-result-score {
+    flex-direction: column;
+    align-items: flex-end;
+
+    gap: 3px;
+  }
+
+  .estadistica-tip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .estadistica-tip-button {
+    width: 100%;
+  }
 }

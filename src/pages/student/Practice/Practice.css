@@ -12,7 +12,7 @@
   padding: 25px 25px 95px;
   background: #020817;
   color: #ffffff;
-  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  font-family: var(--font-family-base);
 }
 
 /* =========================================================
@@ -33,7 +33,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 22px;
+  margin-bottom: var(--font-size-xl);
 }
 
 .practice-title-section {
@@ -52,13 +52,13 @@
 .practice-subtitle {
   margin: 0;
   color: #7d8aa3;
-  font-size: 13px;
+  font-size: var(--font-size-sm);
 }
 
 .practice-header-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-xs);
 }
 
 /* =========================================================
@@ -68,9 +68,9 @@
 .practice-button {
   border: none;
   border-radius: 7px;
-  padding: 10px 17px;
+  padding: var(--space-xs) 17px;
   font-family: inherit;
-  font-size: 12px;
+  font-size: var(--space-sm);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -79,13 +79,13 @@
 .practice-button-primary {
   color: #ffffff;
   background: linear-gradient(135deg, #6845f5, #5935db);
-  box-shadow: 0 5px 18px rgba(91, 55, 219, 0.25);
+  box-shadow: 0 5px var(--font-size-lg) rgba(91, 55, 219, 0.25);
 }
 
 .practice-button-primary:hover {
   transform: translateY(-1px);
   background: linear-gradient(135deg, #7658ff, #6640ec);
-  box-shadow: 0 7px 22px rgba(91, 55, 219, 0.4);
+  box-shadow: 0 7px var(--font-size-xl) rgba(91, 55, 219, 0.4);
 }
 
 .practice-button-secondary {
@@ -115,12 +115,12 @@
   height: 42px;
   padding: 0 45px 0 15px;
   border: 1px solid #202f48;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   outline: none;
   background: #081326;
   color: #ffffff;
   font-family: inherit;
-  font-size: 12px;
+  font-size: var(--space-sm);
   transition: all 0.2s ease;
 }
 
@@ -154,8 +154,8 @@
 .practice-filters {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 22px;
+  gap: var(--radius-sm);
+  margin-bottom: var(--font-size-xl);
   overflow-x: auto;
   padding-bottom: 3px;
 }
@@ -170,12 +170,12 @@
 
 .practice-filters::-webkit-scrollbar-thumb {
   background: #273651;
-  border-radius: 10px;
+  border-radius: var(--space-xs);
 }
 
 .practice-filter {
   flex-shrink: 0;
-  padding: 7px 14px;
+  padding: 7px var(--space-md);
   border: 1px solid #25344e;
   border-radius: 20px;
   background: #091426;
@@ -195,7 +195,7 @@
   color: #ffffff;
   background: #5538d5;
   border-color: #6549ed;
-  box-shadow: 0 4px 14px rgba(83, 56, 213, 0.25);
+  box-shadow: 0 4px var(--space-md) rgba(83, 56, 213, 0.25);
 }
 
 /* =========================================================
@@ -209,10 +209,10 @@
   justify-content: space-between;
   min-height: 150px;
   margin-bottom: 28px;
-  padding: 24px;
+  padding: var(--space-xl);
   overflow: hidden;
   border: 1px solid #313d91;
-  border-radius: 13px;
+  border-radius: var(--font-size-sm);
   background:
     radial-gradient(
       circle at 90% 40%,
@@ -245,7 +245,7 @@
 .practice-featured-label {
   display: inline-block;
   margin-bottom: 7px;
-  padding: 4px 8px;
+  padding: 4px var(--radius-sm);
   border-radius: 4px;
   background: rgba(22, 199, 230, 0.12);
   color: #23d3ec;
@@ -261,7 +261,7 @@
 }
 
 .practice-featured p {
-  margin: 0 0 14px;
+  margin: 0 0 var(--space-md);
   color: #7d8ca5;
   font-size: 11px;
 }
@@ -276,7 +276,7 @@
   justify-content: space-between;
   margin-bottom: 6px;
   color: #8290a8;
-  font-size: 10px;
+  font-size: var(--space-xs);
 }
 
 .practice-progress-info span:last-child {
@@ -288,7 +288,7 @@
   width: 100%;
   height: 5px;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: var(--space-xs);
   background: #202c45;
 }
 
@@ -319,13 +319,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 13px;
+  margin-bottom: var(--font-size-sm);
 }
 
 .practice-section-title {
   margin: 0;
   color: #ffffff;
-  font-size: 16px;
+  font-size: var(--space-lg);
   font-weight: 650;
 }
 
@@ -356,11 +356,11 @@
 .practice-topic-card {
   display: flex;
   align-items: center;
-  gap: 13px;
+  gap: var(--font-size-sm);
   min-height: 90px;
-  padding: 13px;
+  padding: var(--font-size-sm);
   border: 1px solid #1c2a42;
-  border-radius: 10px;
+  border-radius: var(--space-xs);
   background: #081325;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -381,10 +381,10 @@
   height: 41px;
   flex-shrink: 0;
   border: 1px solid #21324e;
-  border-radius: 10px;
+  border-radius: var(--space-xs);
   background: #101e35;
   color: #43cfe8;
-  font-size: 18px;
+  font-size: var(--font-size-lg);
   font-weight: 600;
 }
 
@@ -397,7 +397,7 @@
   margin: 0 0 4px;
   overflow: hidden;
   color: #ffffff;
-  font-size: 12px;
+  font-size: var(--space-sm);
   font-weight: 600;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -406,7 +406,7 @@
 .practice-topic-description {
   margin: 0 0 7px;
   color: #687890;
-  font-size: 10px;
+  font-size: var(--space-xs);
 }
 
 .practice-topic-progress {
@@ -417,7 +417,7 @@
   width: 100%;
   height: 4px;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: var(--space-xs);
   background: #1b2940;
 }
 
@@ -459,8 +459,8 @@
 .practice-item {
   display: flex;
   align-items: center;
-  gap: 13px;
-  padding: 12px 14px;
+  gap: var(--font-size-sm);
+  padding: var(--space-sm) var(--space-md);
   border: 1px solid #1c2a41;
   border-radius: 9px;
   background: #081325;
@@ -495,7 +495,7 @@
   margin: 0 0 5px;
   overflow: hidden;
   color: #ffffff;
-  font-size: 12px;
+  font-size: var(--space-sm);
   font-weight: 600;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -518,7 +518,7 @@
   align-items: center;
   padding: 3px 7px;
   border-radius: 4px;
-  font-size: 8px;
+  font-size: var(--radius-sm);
   font-weight: 600;
 }
 
@@ -549,13 +549,13 @@
   min-height: 220px;
   padding: 30px;
   border: 1px dashed #273650;
-  border-radius: 12px;
+  border-radius: var(--space-sm);
   background: #071224;
   text-align: center;
 }
 
 .practice-empty-icon {
-  margin-bottom: 10px;
+  margin-bottom: var(--space-xs);
   font-size: 30px;
   opacity: 0.6;
 }
@@ -563,7 +563,7 @@
 .practice-empty h3 {
   margin: 0 0 6px;
   color: #ffffff;
-  font-size: 14px;
+  font-size: var(--space-md);
 }
 
 .practice-empty p {
@@ -596,7 +596,7 @@
 
 @media (max-width: 900px) {
   .practice-page {
-    padding: 20px 18px 90px;
+    padding: 20px var(--font-size-lg) 90px;
   }
 
   .practice-topics-grid {
@@ -610,11 +610,11 @@
 
 @media (max-width: 600px) {
   .practice-page {
-    padding: 16px 12px 85px;
+    padding: var(--space-lg) var(--space-sm) 85px;
   }
 
   .practice-header {
-    margin-bottom: 18px;
+    margin-bottom: var(--font-size-lg);
   }
 
   .practice-title {
@@ -659,7 +659,7 @@
   .practice-topic-icon {
     width: 36px;
     height: 36px;
-    font-size: 16px;
+    font-size: var(--space-lg);
   }
 
   .practice-item {
@@ -667,8 +667,8 @@
   }
 
   .practice-item .practice-button {
-    padding: 8px 11px;
-    font-size: 10px;
+    padding: var(--radius-sm) 11px;
+    font-size: var(--space-xs);
   }
 
 }
@@ -679,8 +679,8 @@
 
 @media (max-width: 400px) {
   .practice-page {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: var(--space-xs);
+    padding-right: var(--space-xs);
   }
 
   .practice-item-meta {
@@ -688,7 +688,7 @@
   }
 
   .practice-item .practice-button {
-    padding: 7px 8px;
+    padding: 7px var(--radius-sm);
   }
 
 }

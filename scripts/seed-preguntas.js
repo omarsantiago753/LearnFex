@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { doc, getFirestore, setDoc } from "firebase/firestore";
+import { connectAuthEmulator, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { connectFirestoreEmulator, doc, getFirestore, setDoc } from "firebase/firestore";
 
 const firebaseConfig = {
 	apiKey: process.env.VITE_FIREBASE_API_KEY,
@@ -306,6 +306,15 @@ async function seed() {
 	const app = initializeApp(firebaseConfig);
 	const auth = getAuth(app);
 	const db = getFirestore(app);
+
+	// Optional: seed the local Firebase Emulator Suite instead of production.
+	// Ports must match the "emulators" block of firebase.json.
+	// eslint-disable-next-line no-undef -- pre-existing: this Node script is linted with browser globals
+	if (process.env.SEED_USE_EMULATORS === "true") {
+		connectAuthEmulator(auth, "http://127.0.0.1:9099");
+		connectFirestoreEmulator(db, "127.0.0.1", 8080);
+		console.log("Usando emuladores de Firebase (Auth 9099, Firestore 8080).");
+	}
 
 	await signInWithEmailAndPassword(auth, ADMIN_EMAIL, ADMIN_PASSWORD);
 

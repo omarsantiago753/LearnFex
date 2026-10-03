@@ -51,12 +51,18 @@ export default function Quiz() {
       const resultado = await calificarPrueba(
         cuestionarioId,
         respuestasEstudiante,
-        user.uid,
         tiempoEmpleado
       );
 
       navigate(`/resultados/${resultado.resultadoId}`);
     } catch (err) {
+      if (err.code === "functions/already-exists") {
+        // La prueba ya se guardo (por ejemplo, un reintento tras un timeout):
+        // el resultadoId es determinista (cuestionarioId_uid), vamos a ese resultado.
+        navigate(`/resultados/${cuestionarioId}_${user.uid}`);
+        return;
+      }
+
       console.error("Error al calificar la prueba:", err);
       setError("No se pudo calificar el cuestionario.");
       finalizadoRef.current = false;

@@ -85,10 +85,12 @@ exports.calificarPrueba = onCall(async (request) => {
 		if (error.code === GRPC_ALREADY_EXISTS) {
 			throw new HttpsError("already-exists", "Esta prueba ya fue enviada.");
 		}
+		// Un Error se serializa como {} en el log: se registra el mensaje y el codigo.
 		logger.error("Falló la escritura del resultado", {
 			uid,
 			cuestionarioId,
-			error,
+			error: error.message,
+			codigo: error.code,
 		});
 		throw new HttpsError("internal", "No se pudo guardar el resultado.");
 	}
@@ -101,7 +103,7 @@ exports.calificarPrueba = onCall(async (request) => {
 		logger.error("Falló la gamificación; el resultado quedó guardado", {
 			uid,
 			resultadoId,
-			error,
+			error: error.message,
 		});
 	}
 

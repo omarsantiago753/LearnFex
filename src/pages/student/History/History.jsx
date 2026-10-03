@@ -1,90 +1,93 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./History.css";
 
 import { getResultadosByUsuario } from "../../../repositories/resultRepository";
 import { useAuth } from "../../../hooks/useAuth";
+import Button from "../../../components/Button/Button";
+import Card from "../../../components/Card/Card";
+import Loader from "../../../components/Loader/Loader";
+
+const PUNTAJE_APROBATORIO = 60;
+
+const formatDate = (date) => {
+	if (!date) return "Sin fecha";
+
+	try {
+		let parsedDate = date;
+
+		if (date?.seconds) {
+			parsedDate = new Date(date.seconds * 1000);
+		}
+
+		const formattedDate = new Date(parsedDate);
+
+		if (Number.isNaN(formattedDate.getTime())) {
+			return "Sin fecha";
+		}
+
+		return formattedDate.toLocaleString("es-CO", {
+			day: "2-digit",
+			month: "2-digit",
+			year: "numeric",
+			hour: "2-digit",
+			minute: "2-digit",
+		});
+	} catch {
+		return "Sin fecha";
+	}
+};
+
+const isPassed = (puntaje) => Number(puntaje ?? 0) >= PUNTAJE_APROBATORIO;
 
 const History = () => {
 	const navigate = useNavigate();
-	const { user } = useAuth();
+	const { user, loading: authLoading } = useAuth();
 
-	const [resultados, setResultados] = useState([]);
-	const [loading, setLoading] = useState(true);
+	// null = todavía no se cargó (distinto de "cargó y no hay resultados").
+	const [resultados, setResultados] = useState(null);
 	const [error, setError] = useState("");
+	const [intento, setIntento] = useState(0);
 
 	useEffect(() => {
-		const loadHistorial = async () => {
-			if (!user?.uid) {
-				setLoading(false);
-				return;
-			}
+		// Esperar a que useAuth resuelva la sesión: si no, se decidiría el
+		// estado vacío antes de conocer al usuario.
+		if (authLoading || !user?.uid) return;
 
-			try {
-				setLoading(true);
-				setError("");
+		let cancelado = false;
 
-				const data = await getResultadosByUsuario(user.uid);
-
-				setResultados(data || []);
-			} catch (err) {
+		getResultadosByUsuario(user.uid)
+			.then((data) => {
+				if (!cancelado) setResultados(data || []);
+			})
+			.catch((err) => {
 				console.error("Error al cargar el historial:", err);
-				setError("No se pudo cargar el historial.");
-			} finally {
-				setLoading(false);
-			}
-		};
 
-		loadHistorial();
-	}, [user]);
-
-	const formatDate = (date) => {
-		if (!date) return "Sin fecha";
-
-		try {
-			let parsedDate = date;
-
-			if (date?.seconds) {
-				parsedDate = new Date(date.seconds * 1000);
-			}
-
-			const formattedDate = new Date(parsedDate);
-
-			if (Number.isNaN(formattedDate.getTime())) {
-				return "Sin fecha";
-			}
-
-			return formattedDate.toLocaleDateString("es-CO", {
-				day: "2-digit",
-				month: "2-digit",
-				year: "numeric",
+				if (!cancelado) setError("No se pudo cargar el historial.");
 			});
-		} catch {
-			return "Sin fecha";
-		}
-	};
 
-	const getResultStatus = (puntaje) => {
-		return Number(puntaje ?? 0) >= 60 ? "Aprobado" : "No aprobado";
-	};
+		return () => {
+			cancelado = true;
+		};
+	}, [user, authLoading, intento]);
 
-	const getStatusClass = (puntaje) => {
-		return Number(puntaje ?? 0) >= 60
-			? "history-status--passed"
-			: "history-status--failed";
+	const handleRetry = () => {
+		setError("");
+		setResultados(null);
+		setIntento((valor) => valor + 1);
 	};
 
 	const handleOpenResult = (resultadoId) => {
 		navigate(`/resultados/${resultadoId}`);
 	};
 
+	const lista = resultados ?? [];
+	const loading = authLoading || (Boolean(user?.uid) && resultados === null && !error);
+
 	if (loading) {
 		return (
 			<main className="history">
-				<div className="history-loading">
-					<div className="history-spinner"></div>
-					<p>Cargando historial...</p>
-				</div>
+				<Loader text="Cargando historial..." />
 			</main>
 		);
 	}
@@ -92,136 +95,124 @@ const History = () => {
 	if (error) {
 		return (
 			<main className="history">
-				<div className="history-error">
-					<div className="history-error-icon">⚠️</div>
-					<h2>No se pudo cargar el historial</h2>
-					<p>{error}</p>
+				<Card className="history-state">
+					<div className="history-state-icon" aria-hidden="true">
+						⚠️
+					</div>
 
-					<button
-						type="button"
-						className="history-button history-button--primary"
-						onClick={() => window.location.reload()}
-					>
+					<h2 className="history-state-title">No se pudo cargar el historial</h2>
+
+					<p className="history-state-text">{error}</p>
+
+					<Button onClick={handleRetry}>
 						Intentar nuevamente
-					</button>
-				</div>
+					</Button>
+				</Card>
 			</main>
 		);
 	}
 
-	if (resultados.length === 0) {
+	if (lista.length === 0) {
 		return (
 			<main className="history">
-				<div className="history-empty">
-					<div className="history-empty-icon">📜</div>
+				<Card className="history-state">
+					<div className="history-state-icon" aria-hidden="true">
+						📜
+					</div>
 
-					<h1>Historial</h1>
+					<h1 className="history-state-title">Historial</h1>
 
-					<p>Todavía no completaste ningún cuestionario</p>
+					<p className="history-state-text">
+						Todavía no completaste ningún cuestionario
+					</p>
 
-					<button
-						type="button"
-						className="history-button history-button--primary"
-						onClick={() => navigate("/practica")}
-					>
+					<Button onClick={() => navigate("/practica")}>
 						Realizar cuestionario
-					</button>
-				</div>
+					</Button>
+				</Card>
 			</main>
 		);
 	}
 
 	return (
 		<main className="history">
-			<div className="history-container">
-				<header className="history-header">
-					<div>
-						<p className="history-label">MI PROGRESO</p>
-						<h1>Historial</h1>
-						<p className="history-description">
-							Consulta los cuestionarios que has realizado y revisa
-							tus resultados.
-						</p>
-					</div>
+			<header className="history-header">
+				<div>
+					<p className="history-label">MI PROGRESO</p>
 
-					<button
-						type="button"
-						className="history-practice-button"
-						onClick={() => navigate("/practica")}
-					>
-						Practicar
-					</button>
-				</header>
+					<h1 className="history-title">Historial</h1>
 
-				<section className="history-section">
-					<div className="history-section-header">
-						<div>
-							<h2>Resultados anteriores</h2>
-							<p>
-								Tus cuestionarios aparecen del más reciente al
-								más antiguo.
-							</p>
-						</div>
-					</div>
+					<p className="history-description">
+						Consulta los cuestionarios que has realizado y revisa tus resultados.
+					</p>
+				</div>
 
-					<div className="history-list">
-						{resultados.map((resultado) => (
+				<Button onClick={() => navigate("/practica")}>Practicar</Button>
+			</header>
+
+			<section className="history-section">
+				<div className="history-section-header">
+					<h2 className="history-section-title">Resultados anteriores</h2>
+
+					<p className="history-section-text">
+						Tus cuestionarios aparecen del más reciente al más antiguo.
+					</p>
+				</div>
+
+				<ul className="history-list">
+					{lista.map((resultado) => (
+						<li key={resultado.id}>
 							<button
 								type="button"
 								className="history-item"
-								key={resultado.id}
 								onClick={() => handleOpenResult(resultado.id)}
 							>
 								<div className="history-item-main">
-									<div className="history-item-icon">📝</div>
+									<div className="history-item-icon" aria-hidden="true">
+										📝
+									</div>
 
 									<div className="history-item-info">
 										<strong>Cuestionario</strong>
-										<span>
-											{formatDate(resultado.fecha)}
-										</span>
+										<span>{formatDate(resultado.fecha)}</span>
 									</div>
 								</div>
 
 								<div className="history-item-stat">
-									<strong>
-										{resultado.puntaje ?? 0}%
-									</strong>
+									<strong>{resultado.puntaje ?? 0}%</strong>
 									<span>Puntaje</span>
 								</div>
 
 								<div className="history-item-stat history-item-stat--correct">
-									<strong>
-										{resultado.respuestasCorrectas ?? 0}
-									</strong>
+									<strong>{resultado.respuestasCorrectas ?? 0}</strong>
 									<span>Correctas</span>
 								</div>
 
 								<div className="history-item-stat history-item-stat--incorrect">
-									<strong>
-										{resultado.respuestasIncorrectas ?? 0}
-									</strong>
+									<strong>{resultado.respuestasIncorrectas ?? 0}</strong>
 									<span>Incorrectas</span>
 								</div>
 
 								<div className="history-item-status">
 									<span
-										className={`history-status ${getStatusClass(
-											resultado.puntaje,
-										)}`}
+										className={`history-status ${
+											isPassed(resultado.puntaje)
+												? "history-status--passed"
+												: "history-status--failed"
+										}`}
 									>
-										{getResultStatus(resultado.puntaje)}
+										{isPassed(resultado.puntaje) ? "Aprobado" : "No aprobado"}
 									</span>
 
-									<span className="history-item-arrow">
+									<span className="history-item-arrow" aria-hidden="true">
 										→
 									</span>
 								</div>
 							</button>
-						))}
-					</div>
-				</section>
-			</div>
+						</li>
+					))}
+				</ul>
+			</section>
 		</main>
 	);
 };

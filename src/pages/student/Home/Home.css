@@ -7,19 +7,10 @@
   min-height: 100vh;
   padding: 32px;
   box-sizing: border-box;
-
-  background: #0f172a;
-  color: #f8fafc;
-
-  font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
 }
-
 
 /* =========================================================
    ENCABEZADO
@@ -29,12 +20,10 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto 30px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  gap: 25px;
+  gap: var(--space-xl);
 }
 
 .home-welcome {
@@ -42,57 +31,48 @@
 }
 
 .home-greeting {
-  margin: 0 0 8px;
-
-  color: #94a3b8;
-  font-size: 15px;
+  margin: 0 0 var(--space-xs);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
   font-weight: 500;
 }
 
 .home-title {
   margin: 0;
-
-  font-size: 32px;
+  font-size: var(--font-size-xl);
   line-height: 1.2;
   font-weight: 700;
-
-  color: #f8fafc;
+  color: var(--color-text);
 }
 
 .home-subtitle {
-  margin: 10px 0 0;
-
+  margin: var(--space-xs) 0 0;
   max-width: 600px;
-
-  color: #94a3b8;
-  font-size: 15px;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
   line-height: 1.6;
 }
 
 .home-level {
   min-width: 160px;
-  padding: 18px 22px;
-
-  border: 1px solid #263449;
-  border-radius: 14px;
-
-  background: #172033;
-
+  padding: var(--space-lg) var(--space-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: var(--space-xs);
 }
 
 .home-level-label {
-  color: #64748b;
-  font-size: 12px;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
 }
 
 .home-level strong {
-  color: #f8fafc;
-  font-size: 15px;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
 }
-
 
 /* =========================================================
    ESTADÍSTICAS
@@ -102,26 +82,19 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto 30px;
-
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-
-  gap: 18px;
+  gap: var(--space-lg);
 }
 
 .home-stat-card {
-  padding: 20px;
-
-  border: 1px solid #263449;
-  border-radius: 15px;
-
-  background: #172033;
-
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
   display: flex;
   align-items: center;
-
-  gap: 15px;
-
+  gap: var(--space-md);
   transition:
     transform 0.2s ease,
     border-color 0.2s ease;
@@ -129,38 +102,31 @@
 
 .home-stat-card:hover {
   transform: translateY(-3px);
-  border-color: #3b82f6;
+  border-color: var(--color-primary);
 }
 
 .home-stat-icon {
   width: 46px;
   height: 46px;
-
-  border-radius: 12px;
-
-  background: #1e293b;
-
+  border-radius: var(--radius-md);
+  background: var(--color-surface-alt);
   display: flex;
   align-items: center;
   justify-content: center;
-
-  font-size: 21px;
+  font-size: var(--font-size-lg);
 }
 
 .home-stat-label {
   display: block;
-
-  margin-bottom: 4px;
-
-  color: #64748b;
-  font-size: 12px;
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
 }
 
 .home-stat-value {
-  color: #f8fafc;
-  font-size: 20px;
+  color: var(--color-text);
+  font-size: var(--font-size-lg);
 }
-
 
 /* =========================================================
    ACCIONES PRINCIPALES
@@ -170,110 +136,86 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto 38px;
-
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-
-  gap: 20px;
+  gap: var(--space-lg);
 }
 
 .home-action-card {
-  padding: 25px;
-
-  border: 1px solid #263449;
-  border-radius: 18px;
-
-  background: #172033;
-
+  padding: var(--space-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   min-height: 180px;
-
   box-sizing: border-box;
 }
 
 .home-action-practice {
-  border-color: #334d75;
+  border-color: var(--color-primary);
 }
 
 .home-action-content {
   display: flex;
   align-items: flex-start;
-
-  gap: 16px;
+  gap: var(--space-md);
 }
 
 .home-action-icon {
   width: 48px;
   height: 48px;
-
   flex-shrink: 0;
-
-  border-radius: 13px;
-
-  background: #1e293b;
-
+  border-radius: var(--radius-md);
+  background: var(--color-surface-alt);
   display: flex;
   align-items: center;
   justify-content: center;
-
-  font-size: 21px;
+  font-size: var(--font-size-lg);
 }
 
 .home-action-card h2 {
-  margin: 0 0 7px;
-
-  font-size: 19px;
+  margin: 0 0 var(--space-xs);
+  font-size: var(--font-size-lg);
   font-weight: 650;
 }
 
 .home-action-card p {
   margin: 0;
-
-  color: #94a3b8;
-
-  font-size: 14px;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
   line-height: 1.5;
 }
 
 .home-button {
   align-self: flex-start;
-
-  margin-top: 22px;
-
-  padding: 11px 18px;
-
+  margin-top: var(--space-xl);
+  padding: var(--space-xs) var(--space-lg);
   border: none;
-  border-radius: 9px;
-
-  background: #2563eb;
-  color: white;
-
-  font-size: 13px;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
   font-weight: 600;
-
   cursor: pointer;
-
   transition:
     background 0.2s ease,
     transform 0.2s ease;
 }
 
 .home-button:hover {
-  background: #1d4ed8;
+  background: var(--color-primary);
   transform: translateY(-1px);
 }
 
 .home-button-secondary {
-  background: #334155;
+  background: var(--color-surface-alt);
 }
 
 .home-button-secondary:hover {
-  background: #475569;
+  background: var(--color-surface);
 }
-
 
 /* =========================================================
    SECCIÓN GENERAL
@@ -286,51 +228,41 @@
 }
 
 .home-section-header {
-  margin-bottom: 18px;
-
+  margin-bottom: var(--space-lg);
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  gap: 15px;
+  gap: var(--space-md);
 }
 
 .home-section-header h2 {
-  margin: 0 0 5px;
-
-  font-size: 21px;
+  margin: 0 0 var(--space-xs);
+  font-size: var(--font-size-lg);
 }
 
 .home-section-header p {
   margin: 0;
-
-  color: #64748b;
-  font-size: 13px;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
 }
 
 .home-see-more {
-  padding: 8px 13px;
-
-  border: 1px solid #334155;
-  border-radius: 8px;
-
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
   background: transparent;
-  color: #94a3b8;
-
-  font-size: 12px;
-
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
   cursor: pointer;
-
   transition:
     background 0.2s ease,
     color 0.2s ease;
 }
 
 .home-see-more:hover {
-  background: #1e293b;
-  color: #f8fafc;
+  background: var(--color-surface-alt);
+  color: var(--color-text);
 }
-
 
 /* =========================================================
    ÁREAS
@@ -338,28 +270,19 @@
 
 .home-areas {
   display: grid;
-
   grid-template-columns: repeat(4, 1fr);
-
-  gap: 16px;
+  gap: var(--space-md);
 }
 
 .home-area-card {
   position: relative;
-
   min-height: 175px;
-
-  padding: 20px;
-
+  padding: var(--space-lg);
   box-sizing: border-box;
-
-  border: 1px solid #263449;
-  border-radius: 15px;
-
-  background: #172033;
-
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
   cursor: pointer;
-
   transition:
     transform 0.2s ease,
     border-color 0.2s ease,
@@ -368,67 +291,51 @@
 
 .home-area-card:hover {
   transform: translateY(-4px);
-
-  border-color: #3b82f6;
-
-  background: #1a263b;
+  border-color: var(--color-primary);
+  background: var(--color-surface-alt);
 }
 
 .home-area-icon {
   width: 44px;
   height: 44px;
-
-  margin-bottom: 20px;
-
-  border-radius: 11px;
-
-  background: #1e293b;
-
+  margin-bottom: var(--space-lg);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-alt);
   display: flex;
   align-items: center;
   justify-content: center;
-
-  color: #60a5fa;
-
-  font-size: 18px;
+  color: var(--color-primary);
+  font-size: var(--font-size-md);
   font-weight: 700;
 }
 
 .home-area-info h3 {
-  margin: 0 0 7px;
-
-  font-size: 16px;
+  margin: 0 0 var(--space-xs);
+  font-size: var(--font-size-md);
 }
 
 .home-area-info p {
   margin: 0;
-
-  color: #64748b;
-
-  font-size: 12px;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
   line-height: 1.5;
 }
 
 .home-area-arrow {
   position: absolute;
-
-  right: 18px;
-  bottom: 17px;
-
-  color: #64748b;
-
-  font-size: 18px;
-
+  right: var(--space-lg);
+  bottom: var(--space-md);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-md);
   transition:
     transform 0.2s ease,
     color 0.2s ease;
 }
 
 .home-area-card:hover .home-area-arrow {
-  color: #60a5fa;
+  color: var(--color-primary);
   transform: translateX(4px);
 }
-
 
 /* =========================================================
    RANKING
@@ -437,39 +344,27 @@
 .home-ranking {
   width: 100%;
   max-width: 1200px;
-
-  margin: 0 auto 20px;
-
-  padding: 22px 25px;
-
+  margin: 0 auto var(--space-lg);
+  padding: var(--space-xl);
   box-sizing: border-box;
-
-  border: 1px solid #263449;
-  border-radius: 16px;
-
-  background: #172033;
-
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
   display: flex;
   align-items: center;
-
-  gap: 18px;
+  gap: var(--space-lg);
 }
 
 .home-ranking-icon {
   width: 50px;
   height: 50px;
-
   flex-shrink: 0;
-
-  border-radius: 13px;
-
-  background: #1e293b;
-
+  border-radius: var(--radius-md);
+  background: var(--color-surface-alt);
   display: flex;
   align-items: center;
   justify-content: center;
-
-  font-size: 23px;
+  font-size: var(--font-size-xl);
 }
 
 .home-ranking-content {
@@ -477,54 +372,44 @@
 }
 
 .home-ranking-content h2 {
-  margin: 0 0 5px;
-
-  font-size: 17px;
+  margin: 0 0 var(--space-xs);
+  font-size: var(--font-size-md);
 }
 
 .home-ranking-content p {
   margin: 0;
-
-  color: #64748b;
-
-  font-size: 13px;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
   line-height: 1.5;
 }
 
 .home-ranking-button {
-  padding: 10px 17px;
-
-  border: 1px solid #334155;
-  border-radius: 9px;
-
-  background: #1e293b;
-  color: #e2e8f0;
-
-  font-size: 13px;
+  padding: var(--space-xs) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
   font-weight: 600;
-
   cursor: pointer;
-
   transition:
     background 0.2s ease,
     border-color 0.2s ease;
 }
 
 .home-ranking-button:hover {
-  background: #2563eb;
-  border-color: #2563eb;
-  color: white;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-text);
 }
-
 
 /* =========================================================
    RESPONSIVE - TABLET
 ========================================================= */
 
 @media (max-width: 900px) {
-
   .home-container {
-    padding: 25px;
+    padding: var(--space-xl);
   }
 
   .home-areas {
@@ -536,23 +421,21 @@
   }
 
   .home-stat-card {
-    padding: 15px;
+    padding: var(--space-md);
   }
 
   .home-stat-value {
-    font-size: 17px;
+    font-size: var(--font-size-md);
   }
 }
-
 
 /* =========================================================
    RESPONSIVE - MÓVIL
 ========================================================= */
 
 @media (max-width: 650px) {
-
   .home-container {
-    padding: 18px;
+    padding: var(--space-lg);
   }
 
   .home-header {
@@ -561,7 +444,7 @@
   }
 
   .home-title {
-    font-size: 26px;
+    font-size: var(--font-size-xl);
   }
 
   .home-level {

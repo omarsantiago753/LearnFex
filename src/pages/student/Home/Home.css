@@ -7,10 +7,19 @@
   min-height: 100vh;
   padding: 32px;
   box-sizing: border-box;
+
   background: var(--color-bg);
   color: var(--color-text);
-  font-family: var(--font-family-base);
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 }
+
 
 /* =========================================================
    ENCABEZADO
@@ -20,10 +29,12 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto 30px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: var(--space-xl);
+
+  gap: 25px;
 }
 
 .home-welcome {
@@ -31,48 +42,57 @@
 }
 
 .home-greeting {
-  margin: 0 0 var(--space-xs);
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
+  margin: 0 0 8px;
+
+  color: var(--color-text-muted);
+  font-size: 15px;
   font-weight: 500;
 }
 
 .home-title {
   margin: 0;
-  font-size: var(--font-size-xl);
+
+  font-size: 32px;
   line-height: 1.2;
   font-weight: 700;
+
   color: var(--color-text);
 }
 
 .home-subtitle {
   margin: var(--space-xs) 0 0;
+
   max-width: 600px;
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
+
+  color: var(--color-text-muted);
+  font-size: 15px;
   line-height: 1.6;
 }
 
 .home-level {
   min-width: 160px;
-  padding: var(--space-lg) var(--space-xl);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: var(--color-surface);
+  padding: 18px 22px;
+
+  border: 1px solid var(--color-border-alt);
+  border-radius: 14px;
+
+  background: var(--color-surface-alt);
+
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: 5px;
 }
 
 .home-level-label {
-  color: var(--color-text-muted);
+  color: var(--color-text-faint);
   font-size: var(--font-size-xs);
 }
 
 .home-level strong {
   color: var(--color-text);
-  font-size: var(--font-size-sm);
+  font-size: 15px;
 }
+
 
 /* =========================================================
    ESTADÍSTICAS
@@ -82,22 +102,29 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto 30px;
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-lg);
+
+  gap: 18px;
 }
 
 .home-stat-card {
-  padding: var(--space-lg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: var(--color-surface);
+  padding: 20px;
+
+  border: 1px solid var(--color-border-alt);
+  border-radius: 15px;
+
+  background: var(--color-surface-alt);
+
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+
+  gap: 15px;
+
   transition:
-    transform 0.2s ease,
-    border-color 0.2s ease;
+    transform var(--transition-base),
+    border-color var(--transition-base);
 }
 
 .home-stat-card:hover {
@@ -108,25 +135,32 @@
 .home-stat-icon {
   width: 46px;
   height: 46px;
-  border-radius: var(--radius-md);
-  background: var(--color-surface-alt);
+
+  border-radius: 12px;
+
+  background: var(--color-surface-hover);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-size-lg);
+
+  font-size: 21px;
 }
 
 .home-stat-label {
   display: block;
-  margin-bottom: var(--space-xs);
-  color: var(--color-text-muted);
+
+  margin-bottom: 4px;
+
+  color: var(--color-text-faint);
   font-size: var(--font-size-xs);
 }
 
 .home-stat-value {
   color: var(--color-text);
-  font-size: var(--font-size-lg);
+  font-size: 20px;
 }
+
 
 /* =========================================================
    ACCIONES PRINCIPALES
@@ -136,86 +170,112 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto 38px;
+
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-lg);
+
+  gap: 20px;
 }
 
 .home-action-card {
-  padding: var(--space-xl);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: var(--color-surface);
+  padding: 25px;
+
+  border: 1px solid var(--color-border-alt);
+  border-radius: 18px;
+
+  background: var(--color-surface-alt);
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   min-height: 180px;
+
   box-sizing: border-box;
 }
 
 .home-action-practice {
-  border-color: var(--color-primary);
+  border-color: var(--color-border);
 }
 
 .home-action-content {
   display: flex;
   align-items: flex-start;
-  gap: var(--space-md);
+
+  gap: var(--space-lg);
 }
 
 .home-action-icon {
   width: 48px;
   height: 48px;
+
   flex-shrink: 0;
-  border-radius: var(--radius-md);
-  background: var(--color-surface-alt);
+
+  border-radius: 13px;
+
+  background: var(--color-surface-hover);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-size-lg);
+
+  font-size: 21px;
 }
 
 .home-action-card h2 {
-  margin: 0 0 var(--space-xs);
-  font-size: var(--font-size-lg);
+  margin: 0 0 7px;
+
+  font-size: 19px;
   font-weight: 650;
 }
 
 .home-action-card p {
   margin: 0;
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
+
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-base);
   line-height: 1.5;
 }
 
 .home-button {
   align-self: flex-start;
-  margin-top: var(--space-xl);
-  padding: var(--space-xs) var(--space-lg);
+
+  margin-top: 22px;
+
+  padding: 11px 18px;
+
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: 9px;
+
   background: var(--color-primary);
-  color: var(--color-text);
+  color: var(--color-bg);
+
   font-size: var(--font-size-sm);
   font-weight: 600;
+
   cursor: pointer;
+
   transition:
-    background 0.2s ease,
-    transform 0.2s ease;
+    background var(--transition-base),
+    transform var(--transition-base);
 }
 
 .home-button:hover {
-  background: var(--color-primary);
+  background: var(--color-primary-alt);
   transform: translateY(-1px);
+  color: var(--color-text);
 }
 
 .home-button-secondary {
-  background: var(--color-surface-alt);
+  background: var(--color-surface-hover);
+  color: var(--color-text);
 }
 
 .home-button-secondary:hover {
-  background: var(--color-surface);
+  background: var(--color-border);
 }
+
 
 /* =========================================================
    SECCIÓN GENERAL
@@ -228,41 +288,51 @@
 }
 
 .home-section-header {
-  margin-bottom: var(--space-lg);
+  margin-bottom: 18px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-md);
+
+  gap: 15px;
 }
 
 .home-section-header h2 {
-  margin: 0 0 var(--space-xs);
-  font-size: var(--font-size-lg);
+  margin: 0 0 5px;
+
+  font-size: 21px;
 }
 
 .home-section-header p {
   margin: 0;
-  color: var(--color-text-muted);
+
+  color: var(--color-text-faint);
   font-size: var(--font-size-sm);
 }
 
 .home-see-more {
-  padding: var(--space-xs) var(--space-sm);
+  padding: 8px 13px;
+
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
+
   background: transparent;
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted);
+
   font-size: var(--font-size-xs);
+
   cursor: pointer;
+
   transition:
-    background 0.2s ease,
-    color 0.2s ease;
+    background var(--transition-base),
+    color var(--transition-base);
 }
 
 .home-see-more:hover {
-  background: var(--color-surface-alt);
+  background: var(--color-surface-hover);
   color: var(--color-text);
 }
+
 
 /* =========================================================
    ÁREAS
@@ -270,72 +340,97 @@
 
 .home-areas {
   display: grid;
+
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-md);
+
+  gap: var(--space-lg);
 }
 
 .home-area-card {
   position: relative;
+
   min-height: 175px;
-  padding: var(--space-lg);
+
+  padding: 20px;
+
   box-sizing: border-box;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  background: var(--color-surface);
+
+  border: 1px solid var(--color-border-alt);
+  border-radius: 15px;
+
+  background: var(--color-surface-alt);
+
   cursor: pointer;
+
   transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    background 0.2s ease;
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    background var(--transition-base);
 }
 
 .home-area-card:hover {
   transform: translateY(-4px);
+
   border-color: var(--color-primary);
-  background: var(--color-surface-alt);
+
+  background: var(--color-surface);
 }
 
 .home-area-icon {
   width: 44px;
   height: 44px;
-  margin-bottom: var(--space-lg);
-  border-radius: var(--radius-md);
-  background: var(--color-surface-alt);
+
+  margin-bottom: 20px;
+
+  border-radius: 11px;
+
+  background: var(--color-surface-hover);
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   color: var(--color-primary);
-  font-size: var(--font-size-md);
+
+  font-size: var(--font-size-lg);
   font-weight: 700;
 }
 
 .home-area-info h3 {
-  margin: 0 0 var(--space-xs);
-  font-size: var(--font-size-md);
+  margin: 0 0 7px;
+
+  font-size: 16px;
 }
 
 .home-area-info p {
   margin: 0;
-  color: var(--color-text-muted);
+
+  color: var(--color-text-faint);
+
   font-size: var(--font-size-xs);
   line-height: 1.5;
 }
 
 .home-area-arrow {
   position: absolute;
-  right: var(--space-lg);
-  bottom: var(--space-md);
-  color: var(--color-text-muted);
-  font-size: var(--font-size-md);
+
+  right: 18px;
+  bottom: 17px;
+
+  color: var(--color-text-faint);
+
+  font-size: var(--font-size-lg);
+
   transition:
-    transform 0.2s ease,
-    color 0.2s ease;
+    transform var(--transition-base),
+    color var(--transition-base);
 }
 
 .home-area-card:hover .home-area-arrow {
   color: var(--color-primary);
   transform: translateX(4px);
 }
+
 
 /* =========================================================
    RANKING
@@ -344,27 +439,39 @@
 .home-ranking {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto var(--space-lg);
-  padding: var(--space-xl);
+
+  margin: 0 auto 20px;
+
+  padding: 22px 25px;
+
   box-sizing: border-box;
-  border: 1px solid var(--color-border);
+
+  border: 1px solid var(--color-border-alt);
   border-radius: var(--radius-lg);
-  background: var(--color-surface);
+
+  background: var(--color-surface-alt);
+
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
+
+  gap: 18px;
 }
 
 .home-ranking-icon {
   width: 50px;
   height: 50px;
+
   flex-shrink: 0;
-  border-radius: var(--radius-md);
-  background: var(--color-surface-alt);
+
+  border-radius: 13px;
+
+  background: var(--color-surface-hover);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-size-xl);
+
+  font-size: 23px;
 }
 
 .home-ranking-content {
@@ -372,44 +479,54 @@
 }
 
 .home-ranking-content h2 {
-  margin: 0 0 var(--space-xs);
-  font-size: var(--font-size-md);
+  margin: 0 0 5px;
+
+  font-size: 17px;
 }
 
 .home-ranking-content p {
   margin: 0;
-  color: var(--color-text-muted);
+
+  color: var(--color-text-faint);
+
   font-size: var(--font-size-sm);
   line-height: 1.5;
 }
 
 .home-ranking-button {
-  padding: var(--space-xs) var(--space-md);
+  padding: var(--space-xs) 17px;
+
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  background: var(--color-surface-alt);
-  color: var(--color-text);
+  border-radius: 9px;
+
+  background: var(--color-surface-hover);
+  color: var(--color-text-secondary);
+
   font-size: var(--font-size-sm);
   font-weight: 600;
+
   cursor: pointer;
+
   transition:
-    background 0.2s ease,
-    border-color 0.2s ease;
+    background var(--transition-base),
+    border-color var(--transition-base);
 }
 
 .home-ranking-button:hover {
   background: var(--color-primary);
   border-color: var(--color-primary);
-  color: var(--color-text);
+  color: var(--color-bg);
 }
+
 
 /* =========================================================
    RESPONSIVE - TABLET
 ========================================================= */
 
 @media (max-width: 900px) {
+
   .home-container {
-    padding: var(--space-xl);
+    padding: 25px;
   }
 
   .home-areas {
@@ -421,21 +538,23 @@
   }
 
   .home-stat-card {
-    padding: var(--space-md);
+    padding: 15px;
   }
 
   .home-stat-value {
-    font-size: var(--font-size-md);
+    font-size: 17px;
   }
 }
+
 
 /* =========================================================
    RESPONSIVE - MÓVIL
 ========================================================= */
 
 @media (max-width: 650px) {
+
   .home-container {
-    padding: var(--space-lg);
+    padding: 18px;
   }
 
   .home-header {
@@ -444,7 +563,7 @@
   }
 
   .home-title {
-    font-size: var(--font-size-xl);
+    font-size: 26px;
   }
 
   .home-level {

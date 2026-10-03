@@ -34,6 +34,18 @@ exports.calificarPrueba = onCall(async (request) => {
 		throw new HttpsError("not-found", "El cuestionario no existe.");
 	}
 
+	// 3b. Acota la cantidad de respuestas al tamaño del cuestionario (no se puede enviar de mas).
+	const preguntasDelCuestionario = cuestionarioSnap.data().preguntas;
+	if (
+		!Array.isArray(preguntasDelCuestionario) ||
+		respuestasEstudiante.length > preguntasDelCuestionario.length
+	) {
+		throw new HttpsError(
+			"invalid-argument",
+			"Cantidad de respuestas inválida para este cuestionario.",
+		);
+	}
+
 	// 4. Todas las preguntas en un solo viaje (Admin SDK: no pasa por las reglas).
 	const refs = respuestasEstudiante.map((r) =>
 		db.collection("preguntas").doc(r.preguntaId),

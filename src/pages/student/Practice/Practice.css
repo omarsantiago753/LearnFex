@@ -10,9 +10,9 @@
   min-height: 100vh;
   width: 100%;
   padding: 25px 25px 95px;
-  background: #020817;
-  color: #ffffff;
-  font-family: var(--font-family-base);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
 }
 
 /* =========================================================
@@ -33,7 +33,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--font-size-xl);
+  margin-bottom: 22px;
 }
 
 .practice-title-section {
@@ -51,7 +51,7 @@
 
 .practice-subtitle {
   margin: 0;
-  color: #7d8aa3;
+  color: var(--color-text-subtle);
   font-size: var(--font-size-sm);
 }
 
@@ -70,34 +70,34 @@
   border-radius: 7px;
   padding: var(--space-xs) 17px;
   font-family: inherit;
-  font-size: var(--space-sm);
+  font-size: var(--font-size-xs);
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-base);
 }
 
 .practice-button-primary {
-  color: #ffffff;
+  color: var(--color-text);
   background: linear-gradient(135deg, #6845f5, #5935db);
-  box-shadow: 0 5px var(--font-size-lg) rgba(91, 55, 219, 0.25);
+  box-shadow: 0 5px 18px rgba(91, 55, 219, 0.25);
 }
 
 .practice-button-primary:hover {
   transform: translateY(-1px);
   background: linear-gradient(135deg, #7658ff, #6640ec);
-  box-shadow: 0 7px var(--font-size-xl) rgba(91, 55, 219, 0.4);
+  box-shadow: 0 7px 22px rgba(91, 55, 219, 0.4);
 }
 
 .practice-button-secondary {
-  color: #a7b2c8;
-  background: #0b1527;
-  border: 1px solid #25334b;
+  color: var(--color-text-muted);
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border-alt);
 }
 
 .practice-button-secondary:hover {
-  color: #ffffff;
-  background: #111d31;
-  border-color: #394a67;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border-color: var(--color-border);
 }
 
 /* =========================================================
@@ -114,26 +114,26 @@
   width: 100%;
   height: 42px;
   padding: 0 45px 0 15px;
-  border: 1px solid #202f48;
+  border: 1px solid var(--color-border-alt);
   border-radius: var(--radius-sm);
   outline: none;
-  background: #081326;
-  color: #ffffff;
+  background: var(--color-surface-alt);
+  color: var(--color-text);
   font-family: inherit;
-  font-size: var(--space-sm);
-  transition: all 0.2s ease;
+  font-size: var(--font-size-xs);
+  transition: all var(--transition-base);
 }
 
 .practice-search input::placeholder {
-  color: #596880;
+  color: var(--color-text-faint);
 }
 
 .practice-search input:hover {
-  border-color: #30425f;
+  border-color: var(--color-border);
 }
 
 .practice-search input:focus {
-  border-color: #6850e8;
+  border-color: var(--color-primary-alt);
   box-shadow: 0 0 0 3px rgba(104, 80, 232, 0.12);
 }
 
@@ -142,7 +142,7 @@
   top: 50%;
   right: 15px;
   transform: translateY(-50%);
-  color: #687791;
+  color: var(--color-text-faint);
   font-size: 15px;
   pointer-events: none;
 }
@@ -154,8 +154,8 @@
 .practice-filters {
   display: flex;
   align-items: center;
-  gap: var(--radius-sm);
-  margin-bottom: var(--font-size-xl);
+  gap: 8px;
+  margin-bottom: 22px;
   overflow-x: auto;
   padding-bottom: 3px;
 }
@@ -169,33 +169,33 @@
 }
 
 .practice-filters::-webkit-scrollbar-thumb {
-  background: #273651;
-  border-radius: var(--space-xs);
+  background: var(--color-border);
+  border-radius: var(--radius-md);
 }
 
 .practice-filter {
   flex-shrink: 0;
   padding: 7px var(--space-md);
-  border: 1px solid #25344e;
+  border: 1px solid var(--color-border-alt);
   border-radius: 20px;
-  background: #091426;
-  color: #7f8da5;
+  background: var(--color-surface-alt);
+  color: var(--color-text-subtle);
   font-family: inherit;
   font-size: 11px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-base);
 }
 
 .practice-filter:hover {
-  color: #ffffff;
-  border-color: #5845bd;
+  color: var(--color-text);
+  border-color: var(--color-primary-alt);
 }
 
 .practice-filter.active {
-  color: #ffffff;
-  background: #5538d5;
-  border-color: #6549ed;
-  box-shadow: 0 4px var(--space-md) rgba(83, 56, 213, 0.25);
+  color: var(--color-text);
+  background: var(--color-primary-alt);
+  border-color: var(--color-primary-alt);
+  box-shadow: 0 4px 14px rgba(83, 56, 213, 0.25);
 }
 
 /* =========================================================
@@ -211,8 +211,8 @@
   margin-bottom: 28px;
   padding: var(--space-xl);
   overflow: hidden;
-  border: 1px solid #313d91;
-  border-radius: var(--font-size-sm);
+  border: 1px solid var(--color-border);
+  border-radius: 13px;
   background:
     radial-gradient(
       circle at 90% 40%,
@@ -245,10 +245,10 @@
 .practice-featured-label {
   display: inline-block;
   margin-bottom: 7px;
-  padding: 4px var(--radius-sm);
+  padding: 4px 8px;
   border-radius: 4px;
   background: rgba(22, 199, 230, 0.12);
-  color: #23d3ec;
+  color: var(--color-primary);
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.4px;
@@ -262,7 +262,7 @@
 
 .practice-featured p {
   margin: 0 0 var(--space-md);
-  color: #7d8ca5;
+  color: var(--color-text-subtle);
   font-size: 11px;
 }
 
@@ -275,12 +275,12 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 6px;
-  color: #8290a8;
-  font-size: var(--space-xs);
+  color: var(--color-text-subtle);
+  font-size: 10px;
 }
 
 .practice-progress-info span:last-child {
-  color: #ffffff;
+  color: var(--color-text);
   font-weight: 600;
 }
 
@@ -288,8 +288,8 @@
   width: 100%;
   height: 5px;
   overflow: hidden;
-  border-radius: var(--space-xs);
-  background: #202c45;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-hover);
 }
 
 .practice-progress-fill {
@@ -319,13 +319,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--font-size-sm);
+  margin-bottom: 13px;
 }
 
 .practice-section-title {
   margin: 0;
-  color: #ffffff;
-  font-size: var(--space-lg);
+  color: var(--color-text);
+  font-size: 16px;
   font-weight: 650;
 }
 
@@ -333,7 +333,7 @@
   border: none;
   outline: none;
   background: transparent;
-  color: #7968ee;
+  color: var(--color-primary-alt);
   font-family: inherit;
   font-size: 11px;
   cursor: pointer;
@@ -356,20 +356,20 @@
 .practice-topic-card {
   display: flex;
   align-items: center;
-  gap: var(--font-size-sm);
+  gap: 13px;
   min-height: 90px;
-  padding: var(--font-size-sm);
-  border: 1px solid #1c2a42;
-  border-radius: var(--space-xs);
-  background: #081325;
+  padding: 13px;
+  border: 1px solid var(--color-border-alt);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-alt);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-base);
 }
 
 .practice-topic-card:hover {
   transform: translateY(-2px);
-  border-color: #394577;
-  background: #0b1830;
+  border-color: var(--color-border);
+  background: var(--color-surface);
   box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -380,10 +380,10 @@
   width: 41px;
   height: 41px;
   flex-shrink: 0;
-  border: 1px solid #21324e;
-  border-radius: var(--space-xs);
-  background: #101e35;
-  color: #43cfe8;
+  border: 1px solid var(--color-border-alt);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-hover);
+  color: var(--color-primary);
   font-size: var(--font-size-lg);
   font-weight: 600;
 }
@@ -396,8 +396,8 @@
 .practice-topic-title {
   margin: 0 0 4px;
   overflow: hidden;
-  color: #ffffff;
-  font-size: var(--space-sm);
+  color: var(--color-text);
+  font-size: var(--font-size-xs);
   font-weight: 600;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -405,8 +405,8 @@
 
 .practice-topic-description {
   margin: 0 0 7px;
-  color: #687890;
-  font-size: var(--space-xs);
+  color: var(--color-text-faint);
+  font-size: 10px;
 }
 
 .practice-topic-progress {
@@ -417,32 +417,32 @@
   width: 100%;
   height: 4px;
   overflow: hidden;
-  border-radius: var(--space-xs);
-  background: #1b2940;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-hover);
 }
 
 .practice-topic-progress-fill {
   height: 100%;
   border-radius: inherit;
-  background: #26bfd5;
+  background: var(--color-primary);
   transition: width 0.3s ease;
 }
 
 .practice-topic-percent {
   margin-top: 4px;
-  color: #697993;
+  color: var(--color-text-faint);
   font-size: 9px;
 }
 
 .practice-topic-arrow {
   flex-shrink: 0;
-  color: #596981;
+  color: var(--color-text-faint);
   font-size: 17px;
-  transition: all 0.2s ease;
+  transition: all var(--transition-base);
 }
 
 .practice-topic-card:hover .practice-topic-arrow {
-  color: #897aff;
+  color: var(--color-primary-alt);
   transform: translateX(3px);
 }
 
@@ -459,17 +459,17 @@
 .practice-item {
   display: flex;
   align-items: center;
-  gap: var(--font-size-sm);
+  gap: 13px;
   padding: var(--space-sm) var(--space-md);
-  border: 1px solid #1c2a41;
+  border: 1px solid var(--color-border-alt);
   border-radius: 9px;
-  background: #081325;
-  transition: all 0.2s ease;
+  background: var(--color-surface-alt);
+  transition: all var(--transition-base);
 }
 
 .practice-item:hover {
-  border-color: #354263;
-  background: #0b1830;
+  border-color: var(--color-border);
+  background: var(--color-surface);
 }
 
 .practice-item-icon {
@@ -480,8 +480,8 @@
   height: 39px;
   flex-shrink: 0;
   border-radius: 9px;
-  background: #101e35;
-  color: #8072f2;
+  background: var(--color-surface-hover);
+  color: var(--color-primary-alt);
   font-size: 17px;
   font-weight: 600;
 }
@@ -494,8 +494,8 @@
 .practice-item-title {
   margin: 0 0 5px;
   overflow: hidden;
-  color: #ffffff;
-  font-size: var(--space-sm);
+  color: var(--color-text);
+  font-size: var(--font-size-xs);
   font-weight: 600;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -505,7 +505,7 @@
   display: flex;
   align-items: center;
   gap: 7px;
-  color: #687890;
+  color: var(--color-text-faint);
   font-size: 9px;
 }
 
@@ -518,13 +518,13 @@
   align-items: center;
   padding: 3px 7px;
   border-radius: 4px;
-  font-size: var(--radius-sm);
+  font-size: 8px;
   font-weight: 600;
 }
 
 .practice-badge-easy {
-  color: #4ade80;
-  background: rgba(74, 222, 128, 0.1);
+  color: var(--color-success);
+  background: var(--color-success-bg);
 }
 
 .practice-badge-medium {
@@ -533,8 +533,8 @@
 }
 
 .practice-badge-hard {
-  color: #fb7185;
-  background: rgba(251, 113, 133, 0.1);
+  color: var(--color-error);
+  background: var(--color-error-bg);
 }
 
 /* =========================================================
@@ -548,9 +548,9 @@
   justify-content: center;
   min-height: 220px;
   padding: 30px;
-  border: 1px dashed #273650;
-  border-radius: var(--space-sm);
-  background: #071224;
+  border: 1px dashed var(--color-border-alt);
+  border-radius: 12px;
+  background: var(--color-surface-alt);
   text-align: center;
 }
 
@@ -562,14 +562,14 @@
 
 .practice-empty h3 {
   margin: 0 0 6px;
-  color: #ffffff;
-  font-size: var(--space-md);
+  color: var(--color-text);
+  font-size: var(--font-size-base);
 }
 
 .practice-empty p {
   max-width: 350px;
   margin: 0;
-  color: #687891;
+  color: var(--color-text-faint);
   font-size: 11px;
   line-height: 1.5;
 }
@@ -581,12 +581,12 @@
 .practice-button:focus-visible,
 .practice-filter:focus-visible,
 .practice-section-link:focus-visible {
-  outline: 2px solid #7665f5;
+  outline: 2px solid var(--color-primary-alt);
   outline-offset: 2px;
 }
 
 .practice-topic-card:focus-visible {
-  outline: 2px solid #7665f5;
+  outline: 2px solid var(--color-primary-alt);
   outline-offset: 2px;
 }
 
@@ -596,7 +596,7 @@
 
 @media (max-width: 900px) {
   .practice-page {
-    padding: 20px var(--font-size-lg) 90px;
+    padding: 20px 18px 90px;
   }
 
   .practice-topics-grid {
@@ -614,7 +614,7 @@
   }
 
   .practice-header {
-    margin-bottom: var(--font-size-lg);
+    margin-bottom: 18px;
   }
 
   .practice-title {
@@ -659,7 +659,7 @@
   .practice-topic-icon {
     width: 36px;
     height: 36px;
-    font-size: var(--space-lg);
+    font-size: 16px;
   }
 
   .practice-item {
@@ -667,8 +667,8 @@
   }
 
   .practice-item .practice-button {
-    padding: var(--radius-sm) 11px;
-    font-size: var(--space-xs);
+    padding: 8px 11px;
+    font-size: 10px;
   }
 
 }
@@ -688,7 +688,7 @@
   }
 
   .practice-item .practice-button {
-    padding: 7px var(--radius-sm);
+    padding: 7px 8px;
   }
 
 }

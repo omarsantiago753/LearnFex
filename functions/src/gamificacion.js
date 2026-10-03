@@ -82,8 +82,11 @@ const aplicarGamificacion = async (db, uid, { respuestasCorrectas }) => {
 			if (obtenidosSnaps[i].exists) {
 				return;
 			}
-			const cumpleCriterio = CRITERIOS_LOGROS[logro.criterio];
-			if (cumpleCriterio && cumpleCriterio(totalResultados)) {
+			// hasOwn evita que criterios como "constructor" o "toString" resuelvan al prototipo.
+			if (
+				Object.hasOwn(CRITERIOS_LOGROS, logro.criterio) &&
+				CRITERIOS_LOGROS[logro.criterio](totalResultados)
+			) {
 				tx.set(obtenidosRefs[i], {
 					fechaObtenido: FieldValue.serverTimestamp(),
 				});

@@ -41,6 +41,64 @@ test("rechaza cuestionarioId vacío o muy largo", () => {
 	);
 });
 
+const IDS_INVALIDOS = [
+	"a/b",
+	"__proto__",
+	"__x__",
+	".",
+	"..",
+	"",
+	"con espacio",
+	"x".repeat(129),
+];
+
+test("rechaza cuestionarioId con formato inválido", () => {
+	for (const cuestionarioId of IDS_INVALIDOS) {
+		assert.throws(
+			() => validarEntrada({ ...entradaValida(), cuestionarioId }),
+			esInvalidArgument,
+			`debería rechazar cuestionarioId ${JSON.stringify(cuestionarioId)}`,
+		);
+	}
+});
+
+test("rechaza preguntaId con formato inválido", () => {
+	for (const preguntaId of IDS_INVALIDOS) {
+		assert.throws(
+			() =>
+				validarEntrada({
+					...entradaValida(),
+					respuestasEstudiante: [{ preguntaId, respuestaSeleccionada: "A" }],
+				}),
+			esInvalidArgument,
+			`debería rechazar preguntaId ${JSON.stringify(preguntaId)}`,
+		);
+	}
+});
+
+test("acepta los formatos de ID reales (seed, snake_case y automáticos de Firestore)", () => {
+	for (const id of ["seed_1", "lectura_critica", "Zx9fK2LmQp0aBcD3eFgH", "a-b_C9"]) {
+		const r = validarEntrada({
+			cuestionarioId: id,
+			respuestasEstudiante: [{ preguntaId: id, respuestaSeleccionada: "A" }],
+			tiempoEmpleado: 1,
+		});
+		assert.strictEqual(r.cuestionarioId, id);
+	}
+});
+
+test("respuestaSeleccionada vacía se acepta (cuenta como incorrecta) y las claves extra se descartan", () => {
+	const r = validarEntrada({
+		...entradaValida(),
+		respuestasEstudiante: [
+			{ preguntaId: "p1", respuestaSeleccionada: "", esCorrecta: true, extra: 1 },
+		],
+	});
+	assert.deepStrictEqual(r.respuestasEstudiante, [
+		{ preguntaId: "p1", respuestaSeleccionada: "" },
+	]);
+});
+
 test("rechaza un arreglo de respuestas vacío", () => {
 	assert.throws(
 		() => validarEntrada({ ...entradaValida(), respuestasEstudiante: [] }),

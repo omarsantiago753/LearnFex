@@ -5,6 +5,12 @@ const MAX_LONGITUD_ID = 128;
 const MAX_LONGITUD_RESPUESTA = 16;
 const MAX_TIEMPO_SEGUNDOS = 86400;
 
+// IDs de Firestore seguros: solo letras, numeros, guion y guion bajo (sin "/", ".", ".."),
+// y que no tengan la forma reservada __algo__ (Firestore la rechaza y ademas cubre "__proto__").
+// Los IDs reales (seed_N, snake_case del seed y los automaticos de 20 caracteres) lo cumplen.
+const FORMATO_ID = /^[A-Za-z0-9_-]+$/;
+const FORMATO_ID_RESERVADO = /^__.*__$/;
+
 const invalido = (mensaje) => new HttpsError("invalid-argument", mensaje);
 
 const esObjeto = (valor) =>
@@ -12,6 +18,11 @@ const esObjeto = (valor) =>
 
 const esTextoValido = (valor, maxLongitud) =>
 	typeof valor === "string" && valor.length > 0 && valor.length <= maxLongitud;
+
+const esIdValido = (valor) =>
+	esTextoValido(valor, MAX_LONGITUD_ID) &&
+	FORMATO_ID.test(valor) &&
+	!FORMATO_ID_RESERVADO.test(valor);
 
 /**
  * Valida y normaliza el payload de calificarPrueba.
@@ -25,9 +36,9 @@ const validarEntrada = (data) => {
 
 	const { cuestionarioId, respuestasEstudiante, tiempoEmpleado } = data;
 
-	if (!esTextoValido(cuestionarioId, MAX_LONGITUD_ID)) {
+	if (!esIdValido(cuestionarioId)) {
 		throw invalido(
-			`cuestionarioId debe ser un texto no vacío de hasta ${MAX_LONGITUD_ID} caracteres.`,
+			`cuestionarioId debe tener hasta ${MAX_LONGITUD_ID} caracteres y usar solo letras, números, "-" y "_".`,
 		);
 	}
 
@@ -49,9 +60,9 @@ const validarEntrada = (data) => {
 
 		const { preguntaId, respuestaSeleccionada } = respuesta;
 
-		if (!esTextoValido(preguntaId, MAX_LONGITUD_ID)) {
+		if (!esIdValido(preguntaId)) {
 			throw invalido(
-				`preguntaId debe ser un texto no vacío de hasta ${MAX_LONGITUD_ID} caracteres.`,
+				`preguntaId debe tener hasta ${MAX_LONGITUD_ID} caracteres y usar solo letras, números, "-" y "_".`,
 			);
 		}
 

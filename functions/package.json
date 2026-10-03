@@ -7,7 +7,8 @@
     "node": "22"
   },
   "scripts": {
-    "serve": "firebase emulators:start --only functions",
+    "test": "node --test",
+    "serve":"firebase emulators:start --only functions",
     "logs": "firebase functions:log"
   },
   "dependencies": {
